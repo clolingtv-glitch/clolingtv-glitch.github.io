@@ -1,0 +1,327 @@
+/* 이 섹션에만 적용됩니다. 기존 poster-motion.css는 유지해주세요. */
+.pd-gallery {
+  --pd-card-width: clamp(13rem, 23vw, 25rem);
+  --pd-inset: 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 2fr);
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  min-width: 0;
+  min-height: 100svh;
+  padding-block: 7rem;
+  box-sizing: border-box;
+  color: var(--main-black, #0e1822);
+  scroll-margin-top: 7rem;
+}
+
+.pd-gallery *,
+.pd-dialog * {
+  box-sizing: border-box;
+}
+
+.pd-gallery__intro {
+  padding-bottom: 1rem;
+}
+
+.pd-gallery__eyebrow {
+  margin: 0 0 1.5rem;
+  font-size: .875rem;
+  letter-spacing: .12em;
+}
+
+.pd-gallery__title {
+  margin: 0;
+  font-weight: 700;
+  font-size: clamp(3.5rem, 6.4vw, 8rem);
+  line-height: .95;
+  letter-spacing: -.035em;
+}
+
+.pd-gallery__description {
+  margin: 2rem 0 0;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+.pd-gallery__hint {
+  margin: 2rem 0 0;
+  font-size: .875rem;
+  line-height: 1.7;
+  opacity: .6;
+}
+
+.pd-gallery__showcase {
+  min-width: 0;
+}
+
+.pd-gallery__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 1.5rem 1.5rem var(--pd-inset);
+}
+
+.pd-gallery__arrows {
+  display: flex;
+  gap: .75rem;
+}
+
+.pd-gallery__arrows button {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--main-black, #0e1822);
+  color: var(--background, #f1f3ee);
+  font: inherit;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, opacity 180ms ease;
+  display: none;
+}
+
+.pd-gallery__arrows button:disabled {
+  opacity: .25;
+  cursor: default;
+}
+
+@media (hover: hover) {
+  .pd-gallery__arrows button:not(:disabled):hover {
+    background: var(--sub-pink, #e6aace);
+    color: var(--main-black, #0e1822);
+  }
+}
+
+.pd-gallery__counter {
+  margin: 0;
+  font-size: .875rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .12em;
+}
+
+.pd-gallery__stage {
+  position: relative;
+  width: 100%;
+  height: calc(var(--pd-card-width) * 1.94);
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+  cursor: grab;
+  user-select: none;
+  isolation: isolate;
+}
+
+.pd-gallery__stage.is-dragging,
+.pd-gallery__stage.is-dragging .pd-card {
+  cursor: grabbing;
+}
+
+.pd-card {
+  position: absolute;
+  top: calc(var(--pd-card-width) * .22);
+  left: var(--pd-inset);
+  width: var(--pd-card-width);
+  height: calc(var(--pd-card-width) * 1.5);
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: .35rem;
+  background: transparent;
+  cursor: pointer;
+  transform-origin: center;
+  backface-visibility: hidden;
+  /* 이동·회전·흑백을 같은 프레임에서 계산합니다. */
+  transition: none;
+}
+
+.pd-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: inherit;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.pd-gallery__stage.is-dragging .pd-card {
+  transition: none;
+}
+
+.pd-gallery__caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem 0 var(--pd-inset);
+  font-size: .75rem;
+  letter-spacing: .06em;
+}
+
+.pd-gallery__caption span:last-child {
+  opacity: .5;
+  text-align: right;
+}
+
+.pd-gallery button:focus-visible,
+.pd-gallery__stage:focus-visible {
+  outline: .18rem solid var(--sub-pink, #e6aace);
+  outline-offset: .25rem;
+}
+
+.pd-dialog {
+  width: min(68rem, calc(100vw - 2rem));
+  max-width: none;
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: .75rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: var(--background, #f1f3ee);
+  color: var(--main-black, #0e1822);
+}
+
+.pd-dialog::backdrop {
+  background: rgb(14 24 34 / .8);
+  backdrop-filter: blur(.4rem);
+}
+
+.pd-dialog[open] {
+  animation: pd-dialog-enter 300ms ease-out;
+}
+
+.pd-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.pd-dialog__brand {
+  margin: 0 0 .75rem;
+  font-size: .8rem;
+  letter-spacing: .1em;
+}
+
+.pd-dialog__header h3 {
+  margin: 0;
+  font: inherit;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+}
+
+.pd-dialog__header #pd-detail-description {
+  max-width: 46rem;
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  word-break: keep-all;
+  white-space: pre-line;
+}
+
+.pd-dialog__close {
+  flex: none;
+  min-height: 2.75rem;
+  padding: .5rem 1rem;
+  border: 1px solid currentColor;
+  border-radius: 2rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.pd-dialog__figure {
+  margin: 0;
+  padding: 0 2rem 2rem;
+  text-align: center;
+}
+
+.pd-dialog__figure img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 76svh;
+  margin: auto;
+  object-fit: contain;
+}
+
+@keyframes pd-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .pd-gallery {
+    gap: 2rem;
+    --pd-card-width: clamp(13rem, 29vw, 22rem);
+  }
+
+  .pd-gallery__title {
+    font-size: clamp(3rem, 6.5vw, 6rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .pd-gallery {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    padding-block: 5rem;
+    min-height: auto;
+    --pd-card-width: min(58vw, 25rem);
+  }
+
+  .pd-gallery__intro {
+    padding: 0;
+  }
+
+  .pd-gallery__title {
+    font-size: clamp(3rem, 13vw, 7rem);
+  }
+
+  .pd-gallery__description {
+    margin-top: 1.5rem;
+  }
+
+  .pd-gallery__hint {
+    margin-top: 1rem;
+  }
+
+  .pd-gallery__toolbar {
+    padding-inline: var(--pd-inset) .5rem;
+  }
+
+  .pd-gallery__caption {
+    padding-inline: var(--pd-inset) .5rem;
+  }
+
+  .pd-dialog__header {
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .pd-dialog__figure {
+    padding: 0 1.5rem 1.5rem var(--pd-inset);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pd-dialog[open] {
+    animation: none;
+  }
+}

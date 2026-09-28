@@ -1,0 +1,416 @@
+.ws-section {
+    padding-block: 8rem 3rem;
+    scroll-margin-top: 6rem;
+}
+
+.ws-section *,
+.ws-dialog * {
+    box-sizing: border-box;
+}
+
+.ws-heading {
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--gray);
+}
+
+.ws-heading h2 {
+    margin: 1rem 0;
+    font-size: clamp(3rem, 10vw, 10rem);
+    line-height: 1;
+    color: var(--gray);
+    font-weight: 600;
+    letter-spacing: -.04em;
+}
+
+.ws-heading p {
+    font-size: 1rem;
+    line-height: 1.7;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.ws-project {
+    --ws-accent: #d69d27;
+    display: flex;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 5rem);
+    min-height: 90svh;
+    padding-block: 6rem;
+    border-bottom: 1px solid var(--gray);
+}
+
+.ws-project--tarty {
+    --ws-accent: #e6aace;
+}
+
+.ws-intro {
+    flex: 0 1 30%;
+    min-width: 0;
+}
+
+.ws-eyebrow {
+    font-size: .8rem;
+    letter-spacing: .08em;
+    margin-bottom: 2rem;
+}
+
+.ws-logo {
+    display: block;
+    max-width: 12rem;
+    max-height: 4rem;
+    width: auto;
+    height: auto;
+    margin-bottom: 2rem;
+    /* background: #fff; */
+    /* padding: .75rem 1rem; */
+    border-radius: .3rem;
+}
+
+.ws-intro h3 {
+    font-size: clamp(1.65rem, 2.3vw, 2.8rem);
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: -.04em;
+}
+
+.ws-description {
+    margin-block: 1.5rem;
+    line-height: 1.9;
+    font-size: 1rem;
+}
+
+.ws-intro :is(p, h3, dd),
+.ws-dialog :is(p, dd) {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.ws-meta {
+    margin-block: 1.5rem;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: .65rem 1rem;
+    font-size: .85rem;
+    line-height: 1.8;
+}
+
+.ws-meta dt {
+    opacity: .65;
+}
+
+.ws-meta dd {
+    margin: 0;
+}
+
+.ws-status {
+    font-size: .8rem;
+    line-height: 1.7;
+    opacity: .7;
+}
+
+.ws-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+    margin-top: 2rem;
+}
+
+.ws-actions button,
+.ws-actions a,
+.ws-unavailable {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.8rem;
+    border: 1px solid currentColor;
+    border-radius: 2rem;
+    padding: .75rem 1rem;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+    font-size: .85rem;
+    text-decoration: none;
+}
+
+.ws-actions button,
+.ws-actions a {
+    cursor: pointer;
+    transition: background 220ms, color 220ms;
+}
+
+.ws-actions :is(button, a):hover {
+    background: var(--ws-accent);
+    color: var(--main-black);
+}
+
+.ws-unavailable {
+    opacity: .5;
+    border-style: dashed;
+}
+
+.ws-preview {
+    flex: 1 1 66%;
+    min-width: 0;
+}
+
+.ws-pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-bottom: 1.25rem;
+}
+
+.ws-pages button {
+    font: inherit;
+    font-size: .85rem;
+    color: inherit;
+    background: transparent;
+    border: 1px solid currentColor;
+    border-radius: 2rem;
+    padding: .65rem 1rem;
+    min-height: 2.75rem;
+    cursor: pointer;
+    transition: background 200ms;
+}
+
+.ws-pages button[aria-pressed="true"] {
+    background: var(--ws-accent, var(--sub-pink));
+    color: var(--main-black);
+    border-color: transparent;
+}
+
+.ws-devices {
+    position: relative;
+    padding: 0 8% 3.5rem 0;
+}
+
+.ws-browser {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #d4d0c9;
+    border-radius: .75rem;
+    box-shadow: 0 1.5rem 3rem rgb(0 0 0 / .13);
+}
+
+.ws-browserbar {
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: .65rem 1rem;
+    background: #eeece8;
+    color: #68645f;
+    font-size: .6rem;
+    letter-spacing: .04em;
+}
+
+.ws-browserbar>span:first-child {
+    color: #aaa59d;
+    white-space: nowrap;
+}
+
+.ws-window {
+    aspect-ratio: 1.5;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    background: #fff;
+}
+
+.ws-window img,
+.ws-phonewindow img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+}
+
+.ws-phone {
+    position: absolute;
+    width: 24%;
+    right: 0;
+    bottom: 0;
+    border: .4rem solid #272727;
+    background: #272727;
+    border-radius: 1.4rem;
+    box-shadow: 0 1rem 2rem rgb(0 0 0 / .22);
+    overflow: hidden;
+}
+
+.ws-phonebar {
+    height: .6rem;
+    width: 32%;
+    border-radius: 1rem;
+    background: #090909;
+    margin: .15rem auto .4rem;
+}
+
+.ws-phonewindow {
+    aspect-ratio: .47;
+    overflow: auto;
+    scrollbar-width: none;
+    border-radius: .7rem;
+    background: #fff;
+}
+
+.ws-hint {
+    font-size: .75rem;
+    line-height: 1.7;
+    opacity: .65;
+    word-break: keep-all;
+}
+
+.ws-dialog-controls {
+    padding: 0 1.5rem 1.5rem;
+    max-width: 54rem;
+    margin: auto;
+}
+
+.ws-dialog-controls p {
+    font-size: .85rem;
+    line-height: 1.6;
+}
+
+.ws-dialog .design-dialog__figure img[data-device="mo"] {
+    max-width: 25rem;
+}
+
+.ws-dialog .design-dialog__figure img[data-device="pad"] {
+    max-width: 45rem;
+}
+
+.ws-section :focus-visible,
+.ws-dialog :focus-visible {
+    outline: .2rem solid var(--sub-pink);
+    outline-offset: .2rem;
+}
+
+@media (max-width:1024px) {
+    .ws-project {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 0;
+        gap: 3rem;
+        padding-block: 4rem;
+    }
+
+    .ws-intro {
+        flex: auto;
+        max-width: 50rem;
+    }
+
+    .ws-intro h3 {
+        font-size: 2.7rem;
+    }
+
+    .ws-description {
+        max-width: 40rem;
+    }
+
+    .ws-pages button,
+    .ws-actions button,
+    .ws-actions a,
+    .ws-unavailable {
+        min-height: 3.15rem;
+    }
+}
+
+@media (max-width:768px) {
+    .ws-section {
+        padding-top: 5rem;
+    }
+
+    .ws-project {
+        padding-block: 3rem;
+    }
+
+    .ws-intro h3 {
+        font-size: 2.3rem;
+    }
+
+    .ws-description,
+    .ws-meta {
+        font-size: 1.1rem;
+    }
+
+    .ws-devices {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .ws-phone {
+        position: relative;
+        width: min(42%, 14rem);
+        align-self: flex-end;
+        right: auto;
+        bottom: auto;
+    }
+
+    .ws-window {
+        aspect-ratio: 1.25;
+    }
+
+    .ws-status,
+    .ws-hint {
+        font-size: .95rem;
+    }
+
+    .ws-pages button,
+    .ws-actions button,
+    .ws-actions a,
+    .ws-unavailable {
+        min-height: 3.667rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width:360px) {
+    .ws-intro h3 {
+        font-size: 1.9rem;
+    }
+
+    .ws-meta {
+        grid-template-columns: 1fr;
+        gap: .25rem;
+    }
+
+    .ws-meta dd {
+        margin-bottom: .75rem;
+    }
+
+    .ws-pages {
+        gap: .4rem;
+    }
+
+    .ws-pages button {
+        padding-inline: .8rem;
+    }
+
+    .ws-browserbar {
+        padding-inline: .6rem;
+        font-size: .55rem;
+    }
+
+    .ws-phone {
+        width: 50%;
+    }
+
+    .ws-actions {
+        flex-direction: column;
+    }
+
+    .ws-actions>span>* {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+    .ws-section *,
+    .ws-dialog * {
+        transition: none !important;
+    }
+}

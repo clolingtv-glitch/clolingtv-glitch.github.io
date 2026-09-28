@@ -1,0 +1,294 @@
+/* 기존 product-detail.css 전체를 교체하세요. 기존 반응형 CSS 뒤에 연결합니다.
+   PC는 제목 34% + 나머지 전체 너비의 이미지 3칸. 높이는 상단 메뉴 여백을 제외한 화면 높이입니다. */
+.dp-gallery,
+.dp-gallery *,
+.dp-gallery *::before,
+.dp-gallery *::after {
+  box-sizing: border-box;
+}
+
+.dp-gallery,
+.design-horizontal .dh-track>.dp-gallery {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(2rem, 3vw, 4rem);
+  min-width: 0;
+  width: 100%;
+  max-width: none;
+  color: var(--main-black, #0e1822);
+  background: var(--background, #f1f3ee);
+}
+
+.dp-gallery {
+  min-height: 100svh;
+  padding: 6.5rem 0 2rem;
+}
+
+.dp-gallery__intro {
+  flex: 0 0 34%;
+  min-width: 0;
+}
+
+.dp-gallery__eyebrow {
+  margin: 0 0 .65rem;
+  font-size: 1rem;
+}
+
+.dp-gallery__title {
+  margin: 0;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: clamp(3.5rem, 5.3vw, 9rem);
+  line-height: .96;
+  /* letter-spacing: -.065em; */
+}
+
+.dp-gallery__title span {
+  display: block;
+  white-space: nowrap;
+}
+
+.dp-gallery__description {
+  margin: 2rem 0 0;
+  font-size: 1.25rem;
+  line-height: 1.65;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.dp-gallery__hint {
+  margin: .75rem 0 0;
+  font-size: .875rem;
+  line-height: 1.6;
+  opacity: .6;
+  word-break: keep-all;
+}
+
+.dp-gallery__toggle {
+  display: inline-block;
+  margin: 1.25rem 0 0;
+  padding: .5rem 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: .8rem;
+  cursor: pointer;
+}
+
+.dp-gallery__works {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 1.5vw, 2rem);
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: none;
+}
+
+.dp-card {
+  appearance: none;
+  display: block;
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: max(22rem, calc(100svh - 8.5rem));
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--gray, #dbe4dc);
+  color: inherit;
+  overflow: hidden;
+  cursor: pointer;
+  touch-action: pan-y pinch-zoom;
+}
+
+.dp-card__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  margin: 0;
+  pointer-events: none;
+  user-select: none;
+  transform: translate3d(0, 0, 0);
+}
+
+.dp-card:focus-visible,
+.dp-gallery button:focus-visible {
+  outline: .18rem solid var(--main-black, #0e1822);
+  outline-offset: .3rem;
+}
+
+.dp-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(62rem, calc(100% - 2rem));
+  max-width: none;
+  height: auto;
+  max-height: calc(100svh - 2rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--main-black, #0e1822);
+  background: var(--background, #f1f3ee);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  text-align: left;
+  font-family: inherit;
+}
+
+.dp-dialog::backdrop {
+  background: rgb(14 24 34 / .72);
+}
+
+.dp-dialog__toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--background, #f1f3ee);
+  border-bottom: 1px solid var(--gray, #dbe4dc);
+}
+
+.dp-dialog__toolbar span {
+  font-size: .75rem;
+  letter-spacing: .06em;
+}
+
+.dp-dialog__toolbar button {
+  flex: none;
+  border: 1px solid currentColor;
+  padding: .65rem 1rem;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.dp-dialog__header {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.dp-dialog__header>p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.dp-dialog__header h3 {
+  margin: .6rem 0 1rem;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.3;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.dp-dialog__header .dp-dialog__hint {
+  margin-top: 1rem;
+  opacity: .65;
+  font-size: .85rem;
+}
+
+.dp-dialog__figure {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.dp-dialog__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: initial;
+}
+
+@media (max-width: 1024px) {
+
+  .dp-gallery,
+  .design-horizontal .dh-track>.dp-gallery {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3rem;
+    height: auto;
+    min-height: 0;
+    padding: 5rem 0;
+    overflow: visible;
+  }
+
+  .dp-gallery__intro {
+    flex: none;
+  }
+
+  .dp-gallery__title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+  }
+
+  .dp-gallery__works {
+    flex: none;
+    width: 100%;
+    gap: 2rem;
+  }
+
+  .dp-card {
+    height: 40rem;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .dp-gallery__title {
+    font-size: clamp(2.5rem, 11vw, 4.5rem);
+  }
+
+  .dp-gallery__works {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .dp-card {
+    flex: none;
+    width: 100%;
+    height: 38rem;
+  }
+
+  .dp-dialog {
+    width: calc(100% - 1rem);
+    max-height: calc(100svh - 1rem);
+  }
+
+  .dp-dialog__toolbar {
+    padding: .75rem;
+    gap: .5rem;
+  }
+
+  .dp-dialog__toolbar span {
+    font-size: .65rem;
+  }
+
+  .dp-dialog__header {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dp-card__image {
+    transform: none !important;
+  }
+}

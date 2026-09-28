@@ -1,0 +1,193 @@
+/* 기존 CSS 뒤에서 불러오는 반응형 전용 파일입니다. */
+html { font-size: 16px; }
+main { --page-padding: 3.125rem; padding: 2rem var(--page-padding); }
+.hero { position: relative; }
+.hero__title { font-size: min(21rem, 23vw); font-weight: 400; }
+.main_text { gap: 2rem; margin-bottom: 1.5rem; }
+.hero__intro { min-width: 0; word-break: keep-all; overflow-wrap: break-word; line-height: 1.7; }
+.hero__intro--right { text-align: right; }
+.hero__portfolio { top: auto; position: relative; left: auto; transform: none; width: min(28.1875rem, 34vw); margin: -3rem auto 0; }
+.hero-nav { gap: clamp(1rem, 4vw, 6.25rem); padding-top: 4rem; }
+.skills__title { font-size: min(16rem, 15vw); }
+.skills__headline { font-size: min(6rem, 4.1vw); }
+.skills__content, .skills__intro, .skills__list, .skill-card__heading { min-width: 0; }
+.skills__intro { padding-right: 2rem; top: 6rem; }
+.skills__list { padding-left: clamp(2rem, 5vw, 8rem); column-gap: clamp(1.5rem, 3vw, 4rem); }
+.skill-card__heading h3, .skill-card__subtitle, .skill-card__tasks li {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.skill-card__heading h3 { font-size: clamp(1.25rem, 1.5vw, 1.875rem); }
+.skill-card__tasks { font-size: clamp(1rem, 1.1vw, 1.3rem); }
+.profile-mobile { display: none; }
+/* 단어 단위로 감싸서 타이핑 중에도 한글 어절이 중간에 잘리지 않습니다. */
+.intro-typing__word { display: inline-block; white-space: nowrap; }
+:is(.poster-dialog__copy, .pd-dialog__header > div) { min-width: 0; }
+:is(.poster-dialog__copy h3, .pd-dialog__header h3) { word-break: keep-all; overflow-wrap: break-word; }
+:is(.poster-dialog__close, .pd-dialog__close) { white-space: nowrap; }
+.pd-gallery__caption { flex-wrap: wrap; line-height: 1.5; }
+.pd-gallery__caption > span { min-width: 0; overflow-wrap: break-word; }
+
+@media (max-width: 1024px) {
+  html { font-size: 14px; }
+  main { --page-padding: 2rem; }
+  .hero { padding-bottom: 7rem; }
+  .main_text { gap: 1rem; font-size: 1rem; }
+  .hero__intro { flex: 1; }
+  .hero__title { font-size: min(15rem, 23vw); line-height: .86; }
+  .hero__portfolio { width: min(21rem, 38vw); margin-top: -2rem; }
+  .hero-nav { flex-wrap: wrap; gap: 1rem; padding-top: 3rem; }
+  .hero-nav__link { min-height: 3.15rem; font-size: 1rem; padding: .65rem 1.2rem; }
+  .keyword-marquee { --marquee-gap: 2rem; margin-bottom: 4rem; }
+  .keyword-marquee__group span { font-size: 1.65rem; }
+  .profile-section, .skills, #design, #popup-posters, #poster-design { scroll-margin-top: 7rem; }
+  .skills__header { gap: 2rem; padding-bottom: 3rem; }
+  .skills__title { font-size: clamp(3rem, 17vw, 9rem); line-height: .95; }
+  .skills__background { top: -2rem; height: 32rem; }
+  .skills__content { flex-direction: column; gap: 3rem; }
+  .skills__intro { position: static; flex: none; padding: 0 0 2rem; border-bottom: 1px solid var(--gray); }
+  .skills__headline { font-size: clamp(2rem, 6.5vw, 4rem); line-height: 1.3; word-break: keep-all; }
+  .skills__description { font-size: 1.15rem; line-height: 1.85; }
+  .skills__description br { display: none; }
+  .skills__list { flex: none; width: 100%; padding: 0; border: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem 2rem; }
+  .skill-card__heading { align-items: flex-start; }
+  .skill-card__heading h3 { font-size: 1.5rem; line-height: 1.35; }
+  .skill-card__heading img { width: 1.8rem; height: 1.8rem; }
+  .skill-card__subtitle { font-size: 1rem; line-height: 1.6; }
+  .skill-card__tasks { margin-top: 1rem; font-size: 1.15rem; line-height: 1.8; }
+
+  /* 작은 화면에서는 고정/가로 트랙/화면 높이 제한을 모두 해제합니다. */
+  .design-horizontal { width: 100%; height: auto; margin: 0; }
+  .design-horizontal .dh-viewport { position: static; width: 100%; height: auto; overflow: visible; }
+  .design-horizontal .dh-track { display: block; width: 100%; height: auto; transform: none !important; will-change: auto; }
+  .design-horizontal .dh-track > .dh-panel {
+    display: block; flex: none; width: 100%; height: auto; min-height: 0;
+    padding: 5rem 0; margin: 0; overflow: visible;
+  }
+  .design-horizontal .dh-track > .dh-popup-panel { gap: 2.5rem; padding-top: 6rem; }
+  .design-horizontal .dh-popup-panel > .design-intro { padding: 0; min-height: 0; }
+  .design-intro__title, .dh-popup-panel .design-intro__title {
+    font-size: clamp(2.5rem, 11.5vw, 6rem); white-space: nowrap; line-height: 1.15;
+  }
+  .design-horizontal .dh-popup-panel > .poster-gallery {
+    --poster-width: min(17rem, 43vw);
+    padding: 0;
+    flex: none;
+  }
+  .poster-gallery { --poster-width: min(17rem, 43vw); }
+  .design-horizontal .poster-stage, .poster-stage {
+    height: calc(var(--poster-width) * 1.5 + 6rem);
+  }
+  .poster-gallery__header { align-items: flex-start; gap: 1.5rem; }
+  .design-horizontal .poster-gallery__header h2 { font-size: clamp(1.8rem, 6.5vw, 3rem); line-height: 1.2; }
+  .poster-gallery__intro { line-height: 1.7; word-break: keep-all; }
+  .poster-gallery__controls { flex-wrap: wrap; gap: .5rem; }
+  .poster-gallery__controls button { min-height: 3.15rem; }
+  .design-horizontal .dh-track > .pd-gallery {
+    --pd-card-width: min(25rem, 54vw);
+    display: flex; flex-direction: column; align-items: stretch; gap: 2rem;
+  }
+  .design-horizontal .pd-gallery__title { font-size: clamp(3rem, 11vw, 6rem); line-height: 1; }
+  .pd-gallery__title br { display: initial; }
+  .pd-gallery__description, .pd-gallery__hint { line-height: 1.8; word-break: keep-all; }
+  .pd-gallery__showcase { width: 100%; min-width: 0; }
+  .pd-gallery__arrows button { min-width: 3.15rem; min-height: 3.15rem; }
+  .pd-gallery__caption { font-size: .95rem; letter-spacing: 0; }
+  .pd-gallery__caption span:last-child { font-size: .8rem; }
+
+  .poster-dialog, .pd-dialog {
+    width: calc(100% - 2rem); max-width: 50rem; height: auto;
+    max-height: calc(100dvh - 2rem); padding: 1.25rem; overflow-y: auto;
+  }
+  .poster-dialog[open] { display: block; }
+  .poster-dialog__header, .pd-dialog__header { display: flex; flex-direction: column; gap: 1rem; padding: 0; margin-bottom: 1.5rem; }
+  .poster-dialog__close, .pd-dialog__close { order: -1; align-self: flex-end; min-height: 3.15rem; margin-left: auto; }
+  .poster-dialog__copy, .pd-dialog__header > div { width: 100%; }
+  .poster-dialog__copy h3, .pd-dialog__header h3 { font-size: 1.65rem; line-height: 1.4; }
+  .poster-dialog__copy > p:last-child, .pd-dialog__header #pd-detail-description { font-size: 1.1rem; line-height: 1.8; word-break: keep-all; overflow-wrap: break-word; }
+  .poster-dialog__figure, .pd-dialog__figure { display: block; margin: 0; padding: 0; }
+  .poster-dialog__image, .pd-dialog__figure img { width: 100%; max-width: 32rem; height: auto; max-height: none; margin: auto; object-fit: contain; }
+
+  /* 기존 프로필 이미지의 내용을 작은 화면에서는 실제 텍스트로 표시합니다. */
+  .profile-section__figure { display: none; }
+  .profile-mobile { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem; font-size: 1.1rem; line-height: 1.8; }
+  .profile-mobile__identity { grid-column: 1 / -1; }
+  .profile-mobile__quote { margin: 0 0 2rem; color: var(--sub-pink); font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.5; word-break: keep-all; }
+  .profile-mobile__person { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; }
+  .profile-mobile__portrait { position: relative; flex: none; width: 11rem; aspect-ratio: 490 / 540; overflow: hidden; border-radius: 50%; }
+  .profile-mobile__portrait img { position: absolute; width: 734.694%; max-width: none; height: auto; left: -28.572%; top: -93.519%; }
+  .profile-mobile__name { margin: 0; color: var(--sub-accent); font-size: 1.9rem; }
+  .profile-mobile__english { margin: .25rem 0 1rem; }
+  .profile-mobile__facts, .profile-mobile__list { margin: 0; padding: 0; list-style: none; }
+  .profile-mobile__facts li { margin-top: .35rem; }
+  .profile-mobile :is(p, li, a, h3) { word-break: keep-all; overflow-wrap: break-word; }
+  .profile-mobile__card { min-width: 0; padding: 1.5rem 0; border-top: 1px solid var(--gray); }
+  .profile-mobile__card h3 { margin: 0 0 1.25rem; color: var(--sub-accent); font-size: 1.6rem; }
+  .profile-mobile__card h3 small { color: inherit; font-size: .9rem; font-weight: 400; }
+  .profile-mobile__list li { margin-bottom: 1.25rem; }
+  .profile-mobile time { display: block; color: #6c795e; font-size: .95rem; }
+  .profile-mobile__list small { display: block; color: #687266; font-size: .95rem; }
+  .profile-mobile__tags { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; padding: 0; list-style: none; }
+  .profile-mobile__tags li { border: 1px solid var(--sub-pink); border-radius: 2rem; padding: .2rem .85rem; white-space: nowrap; }
+}
+
+@media (max-width: 768px) {
+  html { font-size: 12px; }
+  main { --page-padding: 1.5rem; padding-top: 1.5rem; }
+  .main_text { flex-direction: column; align-items: flex-start; gap: .25rem; margin-bottom: 2rem; font-size: 1.1rem; }
+  .hero__intro { flex: none; width: 100%; }
+  .hero__intro--right { text-align: left; }
+  .name-mark { width: 10rem; height: 3rem; margin-bottom: 1rem; }
+  .hero__title { font-size: 23vw; }
+  .hero__portfolio { width: 38vw; margin-top: -1.5rem; }
+  .hero { padding-bottom: 5rem; }
+  .hero-nav { gap: .75rem; padding-top: 2rem; }
+  .hero-nav__link { min-height: 3.667rem; padding-inline: 1rem; }
+  .floating-nav { width: calc(100% - 2rem); max-width: 42rem; padding: .4rem; gap: .25rem; border-radius: 2rem; overflow: visible; }
+  .floating-nav .hero-nav__link { flex: 1 1 0; min-width: 0; min-height: 3.667rem; padding: .4rem .15rem; font-size: .9rem; letter-spacing: -.02em; }
+  .skills__header { padding-bottom: 2.5rem; }
+  .skills__background { height: 26rem; }
+  .skill-card__heading h3 { font-size: 1.5rem; }
+  .skill-card__tasks { font-size: 1.15rem; }
+  .pd-gallery__description br, .pd-gallery__hint br { display: none; }
+  .poster-gallery__controls button, .pd-gallery__arrows button { min-height: 3.667rem; min-width: 3.667rem; }
+  .poster-dialog__close, .pd-dialog__close { min-height: 3.667rem; }
+}
+
+@media (max-width: 480px) {
+  main { --page-padding: 1rem; }
+  .skills__list { grid-template-columns: minmax(0,1fr); gap: 2rem; }
+  .skill-card { padding-bottom: 2rem; border-bottom: 1px solid var(--gray); }
+  .skill-card__heading h3 { font-size: 1.65rem; }
+  .profile-mobile { grid-template-columns: minmax(0,1fr); gap: .5rem; }
+  .profile-mobile__person { gap: 1.5rem; }
+  .profile-mobile__identity { padding-bottom: 2rem; }
+  .profile-mobile__portrait { width: 10rem; }
+  .profile-mobile__name { font-size: 1.8rem; }
+  .poster-gallery__header { flex-direction: column; }
+  .design-horizontal .dh-track > .dh-popup-panel { padding-top: 5rem; }
+  .design-horizontal .dh-popup-panel > .poster-gallery { --poster-width: 45vw; }
+  .design-horizontal .dh-track > .pd-gallery { --pd-card-width: 59vw; }
+  .pd-gallery__caption { flex-direction: column; gap: .35rem; }
+  .pd-gallery__caption span:last-child { text-align: left; }
+}
+
+@media (max-width: 360px) {
+  .floating-nav { flex-wrap: wrap; justify-content: center; border-radius: 1.5rem; }
+  .floating-nav .hero-nav__link { flex: 0 0 calc((100% - .5rem) / 3); font-size: 1rem; }
+  #main, #profile, #skills, #design, #popup-posters, #poster-design { scroll-margin-top: 10rem; }
+}
+/* 모든 화면에서 기존 프로필 이미지 사용 */
+.profile-section__figure {
+  display: block;
+}
+
+.profile-mobile {
+  display: none;
+}
+
+.profile-section__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}

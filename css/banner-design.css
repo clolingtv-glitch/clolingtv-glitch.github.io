@@ -1,0 +1,398 @@
+/* 기존 공통/반응형 CSS보다 뒤에 연결합니다. 전역 폰트 크기는 변경하지 않습니다. */
+.bd-gallery,
+.bd-gallery *,
+.bd-dialog,
+.bd-dialog * {
+  box-sizing: border-box;
+}
+
+.bd-gallery {
+  --bd-card-width: max(20rem, min(50vw, 55rem, calc((100svh - 10rem) / 1.6)));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+  padding: 5rem 0;
+  color: var(--main-black, #0e1822);
+  scroll-margin-top: 7rem;
+}
+
+.bd-gallery p,
+.bd-gallery h2,
+.bd-dialog p,
+.bd-dialog h3 {
+  margin: 0;
+}
+
+.bd-gallery__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.bd-gallery__eyebrow,
+.bd-gallery__label {
+  margin-bottom: .7rem !important;
+  font-size: .75rem;
+  letter-spacing: .13em;
+}
+
+.bd-gallery__title {
+  font-family: inherit;
+  font-size: clamp(2rem, 3.4vw, 4rem);
+  font-weight: 700;
+  line-height: 1.12;
+}
+
+.bd-gallery__intro {
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: right;
+  word-break: keep-all;
+}
+
+.bd-gallery__body {
+  display: flex;
+  align-items: center;
+  gap: clamp(.75rem, 2vw, 3rem);
+  min-width: 0;
+}
+
+.bd-gallery__side {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+}
+
+.bd-gallery__brand,
+.bd-gallery__name {
+  font-size: clamp(1rem, 1.4vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.bd-gallery__category,
+.bd-gallery__hint {
+  margin-top: .8rem !important;
+  font-size: .8rem;
+  line-height: 1.7;
+}
+
+.bd-gallery__side p,
+.bd-gallery__intro {
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
+
+.bd-gallery__stage {
+  position: relative;
+  flex: 0 0 var(--bd-card-width);
+  width: var(--bd-card-width);
+  height: calc(var(--bd-card-width) * 1.6);
+  perspective: calc(var(--bd-card-width) * 2.8);
+  perspective-origin: 50% 50%;
+  isolation: isolate;
+  /* 세로 페이지 스크롤을 유지하고, 카드는 클릭으로 엽니다. */
+  touch-action: pan-y pinch-zoom;
+}
+
+.bd-gallery .bd-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--bd-card-width);
+  aspect-ratio: 1920 / 970;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transform-origin: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, opacity;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bd-gallery .bd-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1920 / 970;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.bd-gallery .bd-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: var(--bd-shade, 0);
+  pointer-events: none;
+}
+
+.bd-card:focus-visible {
+  outline: .2rem solid var(--sub-pink, #e6aace);
+  outline-offset: .4rem;
+}
+
+.bd-gallery__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: .8rem;
+  border-top: 1px solid var(--gray, #dbe4dc);
+  display: none;
+}
+
+.bd-gallery__counter {
+  font-size: .875rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.bd-gallery__controls {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.bd-gallery__controls button,
+.bd-dialog__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: .65rem .8rem;
+  border: 1px solid currentColor;
+  border-radius: 2rem;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  font-size: .9rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.bd-gallery__controls .bd-gallery__toggle {
+  min-width: 6rem;
+}
+
+.bd-gallery button:focus-visible,
+.bd-dialog button:focus-visible {
+  outline: .2rem solid var(--sub-pink, #e6aace);
+  outline-offset: .25rem;
+}
+
+@media (hover: hover) {
+
+  .bd-gallery__controls button:hover,
+  .bd-dialog__close:hover {
+    background: var(--sub-pink, #e6aace);
+  }
+}
+
+.bd-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(76rem, calc(100% - 3rem));
+  max-width: none;
+  max-height: calc(100svh - 3rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--main-black, #0e1822);
+  background: var(--background, #f1f3ee);
+  font-family: inherit;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.bd-dialog::backdrop {
+  background: rgb(14 24 34 / .72);
+}
+
+.bd-dialog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.bd-dialog__header>div {
+  min-width: 0;
+}
+
+.bd-dialog__brand {
+  font-size: .85rem;
+  letter-spacing: .08em;
+}
+
+.bd-dialog h3 {
+  margin: .65rem 0 1rem;
+  font-size: clamp(1.7rem, 3vw, 3rem);
+  line-height: 1.2;
+}
+
+.bd-dialog__description {
+  max-width: 60ch;
+  font-size: 1rem;
+  line-height: 1.85;
+  white-space: pre-line;
+}
+
+.bd-dialog h3,
+.bd-dialog__description {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.bd-dialog__close {
+  flex: none;
+}
+
+.bd-dialog__figure {
+  margin: 0;
+}
+
+.bd-dialog__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 기존 가로 패널 규칙과 결합: MY DESIGN/팝업 패널은 수정하지 않습니다. */
+.design-horizontal .dh-track>.bd-gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .bd-gallery {
+    --bd-card-width: min(74vw, 36rem);
+    scroll-margin-top: 7rem;
+  }
+
+  .bd-gallery,
+  .design-horizontal .dh-track>.bd-gallery {
+    height: auto;
+    min-height: 0;
+    padding: 4rem 0;
+    gap: 1.5rem;
+  }
+
+  .bd-gallery__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .bd-gallery__body {
+    flex-wrap: wrap;
+    gap: 1.5rem 1rem;
+  }
+
+  .bd-gallery__side {
+    flex: 1 1 calc(50% - 1rem);
+    text-align: left;
+  }
+
+  .bd-gallery__side--right {
+    text-align: right;
+  }
+
+  .bd-gallery__brand,
+  .bd-gallery__name {
+    font-size: 1.2rem;
+  }
+
+  .bd-gallery__stage {
+    order: 3;
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .bd-gallery__hint {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .bd-gallery {
+    --bd-card-width: min(78vw, 32rem);
+  }
+
+  .bd-gallery__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .bd-gallery__title {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+  }
+
+  .bd-gallery__intro {
+    text-align: left;
+  }
+
+  .bd-gallery__intro br {
+    display: none;
+  }
+
+  .bd-gallery__controls button {
+    min-width: 3.667rem;
+    min-height: 3.667rem;
+  }
+
+  .bd-dialog {
+    width: calc(100% - 2rem);
+    max-height: calc(100svh - 2rem);
+  }
+
+  .bd-dialog__header {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .bd-dialog__close {
+    order: -1;
+    align-self: flex-end;
+    min-height: 3.667rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .bd-gallery {
+    scroll-margin-top: 10rem;
+  }
+
+  .bd-gallery__title {
+    font-size: 2rem;
+  }
+
+  .bd-gallery__controls .bd-gallery__toggle {
+    min-width: 5.5rem;
+    padding-inline: .65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bd-gallery .bd-card {
+    will-change: auto;
+  }
+}

@@ -1,0 +1,238 @@
+/* 기존 main-black / sub-accent / background 변수를 그대로 사용합니다. */
+.poster-gallery {
+  --poster-width: 20rem;
+  --poster-gap: 1.5rem;
+  --orbit-radius: 40rem;
+  color: var(--main-black, #0e1822);
+  /* padding-top: 15rem; */
+}
+
+.poster-gallery *,
+.poster-gallery *::before,
+.poster-gallery *::after {
+  box-sizing: border-box;
+}
+
+.poster-gallery__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.poster-gallery__eyebrow,
+.poster-dialog__brand {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+}
+
+.poster-gallery__header h2 {
+  margin: 0;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.poster-gallery__intro {
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.poster-gallery__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.poster-gallery__controls button,
+.poster-dialog__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  border: 0.0625rem solid currentColor;
+  border-radius: 3rem;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.poster-gallery__controls [data-poster-play] {
+  min-width: 7rem;
+  background: var(--sub-accent, #93c36d);
+}
+
+/* 원형 모션에 필요한 요소만 절대 위치로 배치합니다. */
+.poster-stage {
+  position: relative;
+  height: 42rem;
+  overflow: hidden;
+  column-gap: var(--poster-gap);
+}
+
+.poster-ring {
+  position: absolute;
+  top: calc(var(--orbit-radius) + var(--poster-width) * 0.75 + 2rem);
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  transform: rotate(var(--rotation, 0deg));
+}
+
+.poster-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--poster-width);
+  height: calc(var(--poster-width) * 1.5);
+  margin-left: calc(var(--poster-width) / -2);
+  margin-top: calc(var(--poster-width) * -0.75);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: var(--background, #f1f3ee);
+  font: inherit;
+  cursor: zoom-in;
+  transform: rotate(var(--card-angle)) translateY(calc(0rem - var(--orbit-radius)));
+  box-shadow: 0 0.75rem 1.5rem rgb(14 24 34 / 10%);
+}
+
+.poster-card img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: contain;
+}
+
+.poster-gallery button:focus-visible {
+  outline: 0.1875rem solid var(--main-black, #0e1822);
+  outline-offset: 0.3rem;
+}
+
+/* 클릭 후 확대 보기: 제목/설명은 위, 포스터는 아래 */
+.poster-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(60rem, calc(100% - 2rem));
+  max-width: none;
+  height: min(66rem, calc(100dvh - 2rem));
+  max-height: none;
+  margin: auto;
+  padding: 2rem;
+  border: 0;
+  color: var(--main-black, #0e1822);
+  background: var(--background, #f1f3ee);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.poster-dialog[open] {
+  display: grid;
+  grid-template-rows: auto minmax(10rem, 1fr);
+  gap: 1.5rem;
+}
+
+.poster-dialog::backdrop {
+  background: rgb(14 24 34 / 75%);
+}
+
+.poster-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.poster-dialog__copy {
+  min-width: 0;
+}
+
+.poster-dialog__brand {
+  color: #526c3e;
+}
+
+.poster-dialog__copy h3 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.poster-dialog__copy > p:last-child {
+  max-width: 44rem;
+  margin: 0.75rem 0 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.poster-dialog__close {
+  flex-shrink: 0;
+}
+
+.poster-dialog__figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  margin: 0;
+}
+
+.poster-dialog__image {
+  display: block;
+  width: 100%;
+  max-width: 31.25rem;
+  height: 100%;
+  object-fit: contain;
+}
+
+.poster-dialog[open] .poster-dialog__image {
+  animation: poster-zoom-in 0.45s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+@keyframes poster-zoom-in {
+  from { opacity: 0; transform: translateY(1rem) scale(0.88); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 기존 사이트의 16 / 14 / 12px 루트 글자 크기를 상속합니다. */
+@media (max-width: 1024px) {
+  .poster-gallery { --poster-width: 18rem; }
+  .poster-stage { height: 38rem; }
+}
+
+@media (max-width: 768px) {
+  .poster-gallery { --poster-width: 16rem; padding-block: 4rem; }
+  .poster-gallery__header h2 { font-size: 3rem; }
+  .poster-stage { height: 34rem; }
+  .poster-dialog { padding: 1.25rem; }
+  .poster-dialog__header { gap: 1rem; }
+  .poster-dialog__copy h3 { font-size: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .poster-gallery { --poster-width: 13rem; --poster-gap: 1rem; }
+  .poster-gallery__header h2 { font-size: 2.5rem; }
+  .poster-stage { height: 28rem; }
+  .poster-dialog__header { flex-wrap: wrap-reverse; }
+  .poster-dialog__close { margin-left: auto; }
+  .poster-dialog__copy { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poster-dialog[open] .poster-dialog__image { animation: none; }
+}

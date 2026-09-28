@@ -1,0 +1,16 @@
+/* banner-design.css보다 뒤에 연결하세요. 기존 배너 크기 설정은 그대로 유지합니다. */
+.bd-gallery__stage {
+  touch-action: auto;
+  cursor: grab;
+}
+.bd-gallery .bd-card {
+  /* 이미지 위에서 세로 드래그, 두 손가락 확대는 브라우저에 맡깁니다. */
+  touch-action: pan-x pinch-zoom;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.bd-gallery__stage.is-dragging,
+.bd-gallery__stage.is-dragging .bd-card {
+  cursor: grabbing;
+}

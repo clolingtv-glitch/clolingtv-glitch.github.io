@@ -1,0 +1,734 @@
+/* 다른 섹션 및 반응형 CSS 다음에 연결합니다. */
+.em-gallery,
+.em-gallery *,
+.em-gallery *::before,
+.em-gallery *::after {
+  box-sizing: border-box;
+}
+
+.em-gallery [hidden] {
+  display: none !important;
+}
+
+.em-gallery,
+.design-horizontal .dh-track>.em-gallery {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 3vw, 4rem);
+  width: 100%;
+  min-width: 0;
+  color: var(--main-black, #0e1822);
+  background: var(--background, #f1f3ee);
+}
+
+.em-gallery {
+  height: 100svh;
+  min-height: 40rem;
+  padding: 6.5rem 0 2rem;
+  scroll-margin-top: 7rem;
+}
+
+.em-gallery__left {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 35%;
+  min-width: 0;
+  gap: 1.5rem;
+}
+
+.em-gallery__eyebrow {
+  margin: 0 0 .75rem;
+  font-size: .875rem;
+  letter-spacing: .1em;
+}
+
+.em-gallery__title {
+  margin: 0;
+  font: inherit;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 4.7vw, 6rem);
+  line-height: .98;
+}
+
+.em-gallery__title>span {
+  display: block;
+  white-space: nowrap;
+}
+
+.em-gallery__name {
+  margin: 1.3rem 0 .5rem;
+  font-size: clamp(1rem, 1.2vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.em-gallery__description {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.em-gallery :is(p, figcaption) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.em-gallery button {
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.em-gallery button:focus-visible,
+.em-chat:focus-visible,
+.em-panel:focus-visible {
+  outline: .18rem solid var(--main-black, #0e1822);
+  outline-offset: .25rem;
+}
+
+/* 흰 채팅창은 원래 GIF에 남아 있는 흰 배경도 자연스럽게 연결합니다. */
+.em-chat {
+  display: flex;
+  flex-direction: column;
+  height: clamp(20rem, calc(100svh - 28rem), 34rem);
+  min-width: 0;
+  border: .0625rem solid var(--gray, #dbe4dc);
+  border-radius: 1.25rem;
+  background: #fff;
+  overflow: hidden;
+  scroll-margin-top: 7rem;
+}
+
+.em-chat__header {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: .75rem;
+  padding: .9rem 1.1rem;
+  border-bottom: .0625rem solid var(--gray, #dbe4dc);
+}
+
+.em-chat__header>div {
+  min-width: 0;
+}
+
+.em-chat__header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.em-chat__header p {
+  margin: .15rem 0 0;
+  font-size: .72rem;
+  line-height: 1.4;
+  color: #59655b;
+}
+
+.em-chat__avatar {
+  display: block;
+  flex: none;
+  width: 2.8rem;
+  height: 2.8rem;
+  padding: .2rem;
+  border-radius: 50%;
+  background: var(--sub-pink, #e6aace);
+  overflow: hidden;
+}
+
+.em-chat__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.em-chat__preview {
+  margin-left: auto;
+  font-size: .6rem;
+  letter-spacing: .08em;
+  color: #59655b;
+}
+
+.em-chat__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  padding: 1rem 1.25rem .5rem;
+  gap: .45rem;
+}
+
+.em-chat__sender {
+  flex: none;
+  margin: 0;
+  font-size: .75rem;
+  color: #59655b;
+}
+
+.em-chat__question {
+  align-self: flex-start;
+  flex: none;
+  max-width: 100%;
+  margin: 0;
+  padding: .7rem 1rem;
+  border-radius: .1rem 1rem 1rem 1rem;
+  background: var(--background, #f1f3ee);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.em-chat__reply {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+  min-height: 5rem;
+  margin-left: auto;
+  width: min(100%, 17rem);
+  transform-origin: 75% 80%;
+}
+
+.em-chat__reply img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+}
+
+.em-chat__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  gap: .5rem;
+  min-height: 3rem;
+  padding: .5rem 1.25rem .8rem;
+}
+
+.em-chat__footer p {
+  min-width: 0;
+  margin: 0;
+  font-size: .8rem;
+  line-height: 1.4;
+}
+
+.em-chat__motion {
+  flex: none;
+  padding: .45rem .6rem;
+  border: .0625rem solid var(--gray, #dbe4dc);
+  border-radius: 2rem;
+  background: #fff;
+  font-size: .7rem;
+}
+
+/* 오른쪽: 전체 모음 / PNG / GIF의 탭과 선택판 */
+.em-browser {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  gap: 1rem;
+}
+
+.em-tabs {
+  display: flex;
+  flex: none;
+  gap: .6rem;
+}
+
+.em-tabs>button {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 2.9rem;
+  padding: .7rem .5rem;
+  border: .0625rem solid var(--gray, #dbe4dc);
+  border-radius: 3rem;
+  background: transparent;
+  font-size: .9rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.em-tabs>button[aria-selected="true"] {
+  background: var(--sub-pink, #e6aace);
+  border-color: var(--sub-pink, #e6aace);
+}
+
+.em-label-short {
+  display: none;
+}
+
+.em-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  gap: .9rem;
+}
+
+.em-overview {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+}
+
+.em-overview__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+}
+
+.em-overview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+}
+
+.em-overview__caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  gap: .5rem 1rem;
+  width: 100%;
+  font-size: .85rem;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+.em-overview__caption>span:last-child {
+  font-size: .8rem;
+}
+
+.em-browser__hint {
+  flex: none;
+  margin: 0;
+  font-size: .8rem;
+  line-height: 1.6;
+  color: #59655b;
+}
+
+.em-grid {
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: .75rem;
+}
+
+.em-option {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  min-height: 0;
+  gap: .3rem;
+  margin: 0;
+  padding: .5rem;
+  border: .125rem solid transparent;
+  border-radius: .75rem;
+  background: #fff;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.em-option[aria-pressed="true"] {
+  border-color: var(--sub-pink, #e6aace);
+}
+
+.em-option__image {
+  display: block;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.em-option__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.em-option__name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  min-height: 2.6em;
+  font-size: .75rem;
+  line-height: 1.3;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.em-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  gap: 1rem;
+}
+
+.em-pagination button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  padding: 0;
+  border: .0625rem solid var(--gray, #dbe4dc);
+  border-radius: 50%;
+  background: none;
+  font-size: 1.2rem;
+}
+
+.em-pagination button:disabled {
+  cursor: default;
+  opacity: .3;
+}
+
+.em-pagination span {
+  min-width: 3rem;
+  text-align: center;
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.em-browser__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex: none;
+}
+
+.em-work-link,
+.em-back-chat {
+  padding: .6rem 0;
+  border: 0;
+  border-bottom: .0625rem solid currentColor;
+  background: none;
+  font-size: .85rem;
+  line-height: 1.5;
+}
+
+.em-back-chat {
+  display: none;
+}
+
+.em-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .em-option:hover {
+    transform: scale(1.04);
+    border-color: var(--sub-pink, #e6aace);
+  }
+
+  .em-tabs>button:hover,
+  .em-pagination button:not(:disabled):hover,
+  .em-chat__motion:hover {
+    background: var(--sub-pink, #e6aace);
+  }
+}
+
+.em-gallery.is-entered .em-gallery__intro,
+.em-gallery.is-entered .em-browser {
+  animation: em-section-enter 500ms ease-out both;
+}
+
+.em-gallery.is-entered .em-browser {
+  animation-delay: 80ms;
+}
+
+@keyframes em-section-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (min-width: 1024.01px) and (max-height: 800px) {
+  .em-gallery__left {
+    gap: 1rem;
+  }
+
+  .em-gallery__title {
+    font-size: clamp(2.5rem, 4vw, 5rem);
+  }
+
+  .em-gallery__name {
+    margin-top: 1rem;
+  }
+
+  .em-gallery__description {
+    font-size: .9rem;
+  }
+
+  .em-chat {
+    height: 20rem;
+  }
+
+  .em-browser {
+    gap: .7rem;
+  }
+
+  .em-grid {
+    gap: .5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .em-gallery,
+  .design-horizontal .dh-track>.em-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3rem;
+    height: auto;
+    min-height: 0;
+    padding: 4rem 0;
+    overflow: visible;
+  }
+
+  .em-gallery__left {
+    flex: none;
+    gap: 2rem;
+  }
+
+  .em-gallery__title {
+    font-size: clamp(3rem, 8vw, 6rem);
+  }
+
+  .em-gallery__name {
+    font-size: 1.4rem;
+  }
+
+  .em-gallery__description {
+    font-size: 1.15rem;
+  }
+
+  .em-chat {
+    width: 100%;
+    height: 33rem;
+  }
+
+  .em-chat__reply {
+    width: min(100%, 22rem);
+  }
+
+  .em-chat__header h3 {
+    font-size: 1.15rem;
+  }
+
+  .em-chat__question {
+    font-size: 1.15rem;
+  }
+
+  .em-chat__footer p {
+    font-size: 1rem;
+  }
+
+  .em-chat__motion {
+    font-size: .85rem;
+    min-height: 3.15rem;
+  }
+
+  .em-browser,
+  .em-panel,
+  .em-overview {
+    flex: none;
+    height: auto;
+  }
+
+  .em-browser {
+    width: 100%;
+  }
+
+  .em-overview__image {
+    flex: none;
+    height: auto;
+  }
+
+  .em-overview img {
+    height: auto;
+  }
+
+  .em-grid {
+    flex: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    gap: 1rem;
+  }
+
+  .em-option__image {
+    flex: none;
+    aspect-ratio: 1;
+  }
+
+  .em-option__name {
+    font-size: .95rem;
+  }
+
+  .em-tabs>button {
+    min-height: 3.15rem;
+    font-size: 1rem;
+  }
+
+  .em-pagination button {
+    width: 3.15rem;
+    height: 3.15rem;
+  }
+
+  .em-back-chat {
+    display: inline-block;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .em-gallery__title {
+    font-size: clamp(2.5rem, 10vw, 5rem);
+  }
+
+  .em-gallery__description br {
+    display: none;
+  }
+
+  .em-chat {
+    height: 32rem;
+  }
+
+  .em-chat__reply {
+    width: min(100%, 20rem);
+  }
+
+  .em-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .em-tabs {
+    gap: .4rem;
+  }
+
+  .em-tabs>button,
+  .em-chat__motion {
+    min-height: 3.667rem;
+  }
+
+  .em-pagination button {
+    width: 3.667rem;
+    height: 3.667rem;
+  }
+
+  .em-browser__hint,
+  .em-overview__caption,
+  .em-work-link,
+  .em-back-chat {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .em-gallery,
+  .em-chat {
+    scroll-margin-top: 10rem;
+  }
+
+  .em-label-wide {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .em-label-short {
+    display: inline;
+  }
+
+  .em-chat__preview {
+    display: none;
+  }
+
+  .em-chat__header {
+    padding-inline: 1rem;
+  }
+
+  .em-chat__body {
+    padding-inline: 1rem;
+  }
+
+  .em-chat__footer {
+    padding-inline: 1rem;
+  }
+
+  .em-option {
+    padding: .35rem;
+  }
+
+  .em-grid {
+    gap: .65rem;
+  }
+
+  .em-option__name {
+    font-size: .9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .em-gallery.is-entered .em-gallery__intro,
+  .em-gallery.is-entered .em-browser {
+    animation: none;
+  }
+
+  .em-option,
+  .em-tabs>button {
+    transition: none;
+  }
+
+  .em-option:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,87 @@
+/* 최신 배너/상세페이지까지 포함한 최종 반응형 보정. 반드시 마지막에 연결합니다. */
+html { font-size: 16px; }
+main { min-width: 0; }
+:is(.hero, .profile-section, .skills, .pd-gallery, .bd-gallery, .dp-gallery) { min-width: 0; }
+:is(.bd-gallery__header > div, .bd-gallery__intro, .pd-gallery__intro, .dp-gallery__intro) { min-width: 0; }
+:is(.pd-gallery__title, .bd-gallery__title, .dp-gallery__title) { word-break: normal; overflow-wrap: normal; }
+:is(.pd-gallery__description, .pd-gallery__hint, .bd-gallery__intro, .bd-gallery__side p, .dp-gallery__description, .dp-gallery__hint) { word-break: keep-all; overflow-wrap: break-word; }
+/* 숨긴 footer는 HTML에서도 제거했습니다. 높이는 현재 제목 영역을 제외해 계산합니다. */
+.bd-gallery { --bd-card-width: min(50vw, 55rem, calc((100svh - 8.5rem - var(--bd-header-height, 6rem) - 1rem) / 1.3)); }
+.bd-gallery, .design-horizontal .dh-track > .bd-gallery { justify-content: flex-start; }
+.bd-gallery__header, .bd-gallery__body { flex-shrink: 0; }
+.bd-gallery__body { justify-content: center; }
+.bd-gallery__stage {
+  flex: 0 0 calc(var(--bd-card-width) * 1.14); width: calc(var(--bd-card-width) * 1.14);
+  height: calc(var(--bd-card-width) * 1.3); overflow: clip;
+}
+/* 원본 프로필을 그대로 축소합니다. */
+.profile-section__figure { display: block; }
+.profile-mobile { display: none; }
+.profile-section__image { display: block; width: 100%; height: auto; }
+@media (max-width: 1024px) {
+  html { font-size: 14px; }
+  main { --page-padding: 2rem; }
+  /* 모든 디자인 섹션: 태블릿부터 세로로. JS의 1024px 분기와 일치합니다. */
+  .design-horizontal { width: 100%; height: auto; margin: 0; }
+  .design-horizontal .dh-viewport { position: static; height: auto; overflow: visible; }
+  .design-horizontal .dh-track { display: flex; flex-direction: column; height: auto; transform: none !important; }
+  .design-horizontal .dh-track > .dh-panel { flex: none; width: 100%; height: auto; min-height: 0; padding: 4rem 0; overflow: visible; }
+  :is(#profile, #skills, #design, #popup-posters, #poster-design, #banner-design, #product-detail-design) { scroll-margin-top: 7rem; }
+  .skills__title { font-size: clamp(3rem, 15vw, 9rem); }
+  .skills__title > span, .skills__title .sf-visual > span { white-space: nowrap; }
+  .skills__headline { font-size: clamp(2rem, 5.5vw, 4rem); }
+  .design-horizontal .dh-track > .pd-gallery,
+  .design-horizontal .dh-track > .dp-gallery { display: flex; flex-direction: column; align-items: stretch; gap: 2.5rem; }
+  .pd-gallery__intro, .dp-gallery__intro { flex: none; width: 100%; }
+  .design-horizontal .pd-gallery__title { font-size: clamp(3rem, 10vw, 6rem); }
+  .design-horizontal .dp-gallery__title { font-size: clamp(3rem, 8vw, 5.5rem); }
+  .dp-gallery__works { flex: none; width: 100%; gap: 1.5rem; }
+  .dp-card { height: 40rem; min-height: 0; }
+  .bd-gallery { --bd-card-width: min(76vw, 42rem); }
+  .design-horizontal .dh-track > .bd-gallery { display: flex; gap: 1.5rem; padding-bottom: 2rem; }
+  .bd-gallery__body { flex-wrap: wrap; gap: 1.5rem 1rem; }
+  .bd-gallery__side { flex: 1 1 calc(50% - .5rem); min-width: 0; }
+  .bd-gallery__stage { order: 3; flex: 0 0 100%; width: 100%; height: calc(var(--bd-card-width) * 1.3); }
+  .bd-gallery__side--left { text-align: left; }
+  .bd-gallery__side--right { text-align: right; }
+  .bd-gallery__title { font-size: clamp(2rem, 5vw, 3.5rem); }
+  .bd-gallery__hint { display: none; }
+}
+@media (max-width: 768px) {
+  html { font-size: 12px; }
+  main { --page-padding: 1.5rem; }
+  .main_text { flex-direction: column; align-items: flex-start; }
+  .hero__intro { width: 100%; }
+  .hero__intro--right { text-align: left; }
+  .hero-nav { flex-wrap: wrap; }
+  .floating-nav .hero-nav__link { white-space: nowrap; }
+  .bd-gallery { --bd-card-width: min(76vw, 38rem); }
+  .bd-gallery__header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .bd-gallery__intro { text-align: left; }
+  .bd-gallery__title { font-size: clamp(1.9rem, 6.5vw, 3.5rem); }
+  .bd-gallery__side { flex-basis: calc(50% - .5rem); }
+  .bd-gallery__brand, .bd-gallery__name { font-size: clamp(1rem, 3vw, 1.4rem); }
+  .bd-gallery__category { font-size: .85rem; letter-spacing: 0; }
+  .pd-gallery__description br, .pd-gallery__hint br, .bd-gallery__intro br { display: none; }
+  /* 모바일에서는 상세페이지 이미지도 한 장씩 세로로 배치합니다. */
+  .dp-gallery__works { flex-direction: column; align-items: stretch; gap: 2rem; }
+  .dp-card { flex: none; width: 100%; height: clamp(32rem, 72svh, 46rem); }
+  .design-horizontal .dp-gallery__title { font-size: clamp(2.5rem, 10vw, 5rem); }
+}
+@media (max-width: 480px) {
+  main { --page-padding: 1rem; }
+  .skills__list { grid-template-columns: minmax(0, 1fr); }
+  .skills__headline { font-size: clamp(1.8rem, 7.5vw, 2.8rem); }
+  .skill-card__heading h3 { font-size: 1.5rem; }
+  .design-horizontal .poster-gallery__header h2 { font-size: clamp(1.8rem, 7.7vw, 2.8rem); }
+  .design-intro__title, .dh-popup-panel .design-intro__title { font-size: clamp(2.5rem, 10.5vw, 5rem); }
+  .pd-gallery__caption { padding-inline: 0; }
+  .bd-gallery__side { flex: 0 0 100%; text-align: left; }
+  .bd-gallery__body { gap: 1rem; }
+  .bd-gallery__side p { word-break: keep-all; }
+}
+@media (max-width: 360px) {
+  :is(#profile, #skills, #design, #popup-posters, #poster-design, #banner-design, #product-detail-design) { scroll-margin-top: 10rem; }
+  .floating-nav { flex-wrap: wrap; }
+  .floating-nav .hero-nav__link { flex: 0 0 calc((100% - .5rem) / 3); }
+}

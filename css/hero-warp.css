@@ -1,0 +1,25 @@
+/* 기존 제목의 글꼴, 크기, 줄 간격과 배치는 그대로 사용합니다. */
+#hero-title.hero-warp {
+  position: relative;
+  overflow: visible;
+}
+
+#hero-title.hero-warp > canvas.hero-warp__canvas {
+  position: absolute;
+  display: none;
+  max-width: none;
+  pointer-events: none;
+}
+
+#hero-title.hero-warp.is-warping > span {
+  opacity: 0;
+}
+
+#hero-title.hero-warp.is-warping > canvas.hero-warp__canvas {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #hero-title.hero-warp.is-warping > span { opacity: 1; }
+  #hero-title.hero-warp.is-warping > canvas.hero-warp__canvas { display: none; }
+}
