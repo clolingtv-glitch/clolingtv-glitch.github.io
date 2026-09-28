@@ -1,0 +1,1428 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="사용자의 경험을 디자인하는 웹디자이너 김하경의 포트폴리오" />
+  <title>KIM HAKYUNG | Portfolio</title>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const reducedMotion = matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+      let releaseTyping;
+      let fallback;
+
+      const intro = {
+        finished: false,
+        animations: [],
+
+        typingReady: new Promise((resolve) => {
+          releaseTyping = resolve;
+        }),
+
+        startTyping() {
+          releaseTyping();
+        },
+
+        finish() {
+          if (intro.finished) return;
+
+          intro.finished = true;
+          clearTimeout(fallback);
+
+          intro.animations.forEach((animation) => {
+            animation.cancel();
+          });
+
+          root.classList.remove("intro-pending");
+          releaseTyping();
+
+          /* 기존 타이틀 왜곡 효과의 위치 다시 계산 */
+          window.dispatchEvent(new Event("resize"));
+        }
+      };
+
+      window.portfolioIntro = intro;
+
+      if (reducedMotion.matches) {
+        intro.finish();
+        return;
+      }
+
+      root.classList.add("intro-pending");
+      fallback = setTimeout(() => intro.finish(), 8000);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/font.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/common.css">
+
+  <link rel="stylesheet" href="./css/poster-motion.css">
+  <script src="./js/poster-motion.js?v=2" defer></script>
+
+  <link rel="stylesheet" href="./css/hero-warp.css">
+  <script src="./js/hero-warp.js" defer></script>
+
+  <link rel="stylesheet" href="./css/scroll-float.css">
+  <script src="./js/scroll-float.js" defer></script>
+
+  <link rel="stylesheet" href="./css/poster-design.css">
+  <script src="./js/poster-design.js" defer></script>
+
+  <link rel="stylesheet" href="./css/design-horizontal.css?v=responsive-1">
+  <script src="./js/design-horizontal.js?v=responsive-1" defer></script>
+  <link rel="stylesheet" href="./css/responsive.css?v=1">
+
+  <link rel="stylesheet" href="./css/banner-design.css">
+  <script src="./js/banner-design.js?v=2" defer></script>
+  <link rel="stylesheet" href="./css/banner-drag.css">
+
+  <link rel="stylesheet" href="./css/product-detail.css">
+  <script src="./js/product-detail.js" defer></script>
+  <link rel="stylesheet" href="./css/design-dialog.css?v=2">
+  <link rel="stylesheet" href="./css/layout-refinement.css?v=2">
+  <link rel="stylesheet" href="./css/emoticon-design.css?v=1">
+  <script src="./js/emoticon-design.js?v=1" defer></script>
+  <link rel="stylesheet" href="./css/website-design.css?v=1">
+  <script src="./js/website-projects.js?v=1" defer></script>
+  <script src="./js/website-design.js?v=1" defer></script>
+  <link rel="stylesheet" href="./css/about.css">
+  <script src="./js/about.js" defer></script>
+  <link rel="stylesheet" href="./css/profile-refresh.css">
+  <script src="./js/profile-refresh.js"></script>
+  <link rel="stylesheet" href="./css/interaction-update.css?v=20260928">
+</head>
+
+<body>
+  <!-- 첫 화면 인트로 -->
+  <div class="site-intro" aria-hidden="true">
+    <svg class="site-intro__heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 6" focusable="false">
+      <path fill="currentColor" d="
+        M 1 0
+        H 3 V 1
+        H 4 V 0
+        H 6 V 1
+        H 7 V 3
+        H 6 V 4
+        H 5 V 5
+        H 4 V 6
+        H 3 V 5
+        H 2 V 4
+        H 1 V 3
+        H 0 V 1
+        H 1 Z
+      " />
+    </svg>
+  </div>
+  <main>
+    <section class="hero" id="main" aria-labelledby="hero-title">
+      <div class="main_text">
+        <div class="hero__intro hero__intro--left">
+          시선을 끄는 첫인상부터 자연스러운 탐색까지,
+        </div>
+        <div class="hero__intro hero__intro--right">
+          사용자의 경험을 디자인합니다
+        </div>
+      </div>
+      <div class="name-mark" aria-label="Kim Ha Kyung">
+        <span>Kim Ha Kyung</span>
+      </div>
+
+      <h1 class="hero__title" id="hero-title">
+        <span>Beyond</span>
+        <span>The Basics</span>
+      </h1>
+
+      <figure class="hero__portfolio">
+        <button class="hero__portfolio-button" type="button" aria-label="포트폴리오 로고 튕기기">
+          <img class="hero__portfolio_img" src="./assets/images/portfolio.svg" alt="" draggable="false">
+        </button>
+      </figure>
+
+      <nav class="hero-nav" aria-label="포트폴리오 메뉴">
+        <a class="hero-nav__link is-active" href="#main" aria-current="page">
+          MAIN
+        </a>
+        <a class="hero-nav__link" href="#profile">PROFILE</a>
+        <a class="hero-nav__link" href="#design">DESIGN</a>
+        <a class="hero-nav__link" href="#website">WEBSITE</a>
+        <a class="hero-nav__link" href="#about">ABOUT</a>
+      </nav>
+    </section>
+
+    <!-- 해시태그 마키 -->
+    <div class="keyword-marquee" tabindex="0" role="region" aria-label="디자인 키워드">
+      <div class="keyword-marquee__track">
+
+        <div class="keyword-marquee__group">
+          <span>#WEB_DESIGN</span>
+          <span>#UI_UX_DESIGN</span>
+          <span>#VISUAL_DESIGN</span>
+          <span>#RESPONSIVE_WEB</span>
+          <span>#CREATIVE_IDEA</span>
+          <span>#USER_EXPERIENCE</span>
+          <span>#DETAIL_ORIENTED</span>
+          <span>#DESIGN_TO_CODE</span>
+        </div>
+
+        <!-- 끊김 없는 반복을 위한 동일한 텍스트 -->
+        <div class="keyword-marquee__group" aria-hidden="true">
+          <span>#WEB_DESIGN</span>
+          <span>#UI_UX_DESIGN</span>
+          <span>#VISUAL_DESIGN</span>
+          <span>#RESPONSIVE_WEB</span>
+          <span>#CREATIVE_IDEA</span>
+          <span>#USER_EXPERIENCE</span>
+          <span>#DETAIL_ORIENTED</span>
+          <span>#DESIGN_TO_CODE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 프로필 -->
+    <section class="pr-profile" id="profile" aria-labelledby="pr-title">
+      <header class="pr-heading">
+        <p class="pr-eyebrow">ME, BEFORE THE WORK</p>
+        <h2 id="pr-title"><span>상상은 자유롭게</span><span>완성은 꼼꼼하게</span></h2>
+      </header>
+      <div class="pr-body">
+        <figure class="pr-art" data-pr-enter>
+          <div class="pr-paper"><img src="./assets/images/designer-illustration.png"
+              alt="컴퓨터와 펜 타블렛으로 디자인하는 김하경의 일러스트" width="1448" height="1086" loading="lazy" decoding="async"></div>
+          <span class="pr-sticker pr-sticker--hello" aria-hidden="true">HELLO, I'M HAKYUNG!</span>
+          <figcaption class="pr-nameplate"><strong>김하경</strong><span>WEB DESIGNER</span><span
+              aria-hidden="true">↗</span></figcaption>
+        </figure>
+        <div class="pr-copy" data-pr-enter>
+          <p class="pr-kicker">아이디어를 구현하는 사람</p>
+          <h3>취향으로부터,<br>아이디어가 시작됩니다</h3>
+          <p class="pr-description">마음에 드는 디자인을 만나면, 무엇이 눈길을 끄는지 한 번 더 들여다봅니다. 색의 조합부터 글자의 간격, 버튼의 움직임까지 작은 선택이 만드는 차이에 관심이 많습니다. 그렇게 발견한 아이디어를 저만의 방식으로 풀어내며 저의 디자인을 채워갑니다.</p>
+          <div class="pr-journey" aria-label="디자인 학습 분야의 흐름"><span>시각·산업디자인</span><span
+              aria-hidden="true">→</span><span>게임그래픽</span><span aria-hidden="true">→</span><strong>웹디자인</strong></div>
+          <ul class="pr-tags" aria-label="디자인 키워드">
+            <li>시각디자인</li>
+            <li>웹디자인</li>
+            <li>2D디자인</li>
+            <li>UX/UI디자인</li>
+          </ul>
+        </div>
+      </div>
+      <a class="pr-next" href="#skills"><span>이런 생각을 이런 도구로 구현합니다</span><span class="pr-next__arrow"
+          aria-hidden="true">↓</span></a>
+    </section>
+
+
+    <!-- Tools & Skills -->
+    <section class="skills" id="skills" aria-labelledby="skills-title">
+
+      <figure class="skills__background" aria-hidden="true">
+        <img class="skills__img" src="./assets/images/tile-img.png" alt="">
+      </figure>
+
+      <header class="skills__header">
+        <span class="skills__number">01</span>
+
+        <h2 class="skills__title" id="skills-title">
+          <span>TOOLS &amp;</span>
+          <span>SKILLS</span>
+        </h2>
+      </header>
+
+      <div class="skills__content">
+
+        <!-- 왼쪽 소개 -->
+        <div class="skills__intro">
+          <h3 class="skills__headline">
+            상상을 꺼내는<br>
+            나만의 도구함
+          </h3>
+
+          <p class="skills__description">
+            이미지를 다듬고, 인터랙션을 그리고, 화면을 구현하며<br>
+            생각 속 디자인을 화면에 담아냅니다
+          </p>
+        </div>
+
+        <!-- 오른쪽 스킬 목록 -->
+        <div class="skills__list">
+
+          <article class="skill-card">
+            <div class="skill-card__heading">
+              <img src="./assets/images/icn-illust.svg" alt="">
+              <h3>Illustrator</h3>
+            </div>
+            <p class="skill-card__subtitle">Branding &amp; Vector Graphics</p>
+
+            <ul class="skill-card__tasks">
+              <li>브랜드 로고 및 심볼 디자인</li>
+              <li>아이콘 및 벡터 일러스트 제작</li>
+              <li>패턴·장식 그래픽 디자인</li>
+              <li>패키지 및 홍보물 그래픽 디자인</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__heading">
+              <img src="./assets/images/icn-photo.svg" alt="">
+              <h3>Photoshop</h3>
+            </div>
+            <p class="skill-card__subtitle">Image Editing &amp; Visual Design</p>
+
+            <ul class="skill-card__tasks">
+              <li>이미지 합성 및 사진 보정</li>
+              <li>포스터, 배너, 썸네일 디자인</li>
+              <li>상세페이지 이미지 및 비주얼 제작</li>
+              <li>제품 누끼·배경 제거 및 합성</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__heading">
+              <img src="./assets/images/icn-figma.svg" alt="">
+              <h3>Figma</h3>
+            </div>
+            <p class="skill-card__subtitle">Wireframing &amp; UI Design</p>
+
+            <ul class="skill-card__tasks">
+              <li>사용자 흐름 및 와이어프레임 설계</li>
+              <li>웹사이트 메인·서브 페이지 UI 디자인</li>
+              <li>PC·태블릿·모바일 반응형 시안 제작</li>
+              <li>화면 연결 및 인터랙티브 프로토타입 제작</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__heading">
+              <img src="./assets/images/icn-vscode.svg" alt="">
+              <h3>HTML &amp; CSS</h3>
+            </div>
+            <p class="skill-card__subtitle">Web Publishing &amp; Responsive Design</p>
+
+            <ul class="skill-card__tasks">
+              <li>웹페이지 마크업 및 디자인 스타일 구현</li>
+              <li>Flex를 활용한 레이아웃 및 간격 조정</li>
+              <li>PC·태블릿·모바일 반응형 웹 구현</li>
+              <li>호버 효과 및 CSS 애니메이션 제작</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__heading">
+              <img src="./assets/images/icn-ex.svg" alt="">
+              <h3>Excel</h3>
+            </div>
+            <p class="skill-card__subtitle">Data Organization &amp; Analysis</p>
+
+            <ul class="skill-card__tasks">
+              <li>표 작성 및 데이터 입력·정리</li>
+              <li>함수와 수식을 활용한 계산 및 집계</li>
+              <li>정렬·필터를 활용한 데이터 분류</li>
+              <li>차트 제작 및 데이터 시각화</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__heading">
+              <img src="./assets/images/icn-pp.svg" alt="">
+              <h3>PowerPoint</h3>
+            </div>
+            <p class="skill-card__subtitle">Presentation &amp; Slide Design</p>
+
+            <ul class="skill-card__tasks">
+              <li>기획서 및 프로젝트 발표 자료 제작</li>
+              <li>슬라이드 레이아웃 및 템플릿 디자인</li>
+              <li>이미지·도형을 활용한 정보 시각화</li>
+              <li>화면 전환 및 애니메이션 효과 적용</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__heading">
+              <img src="./assets/images/icn-hwp.svg" alt="">
+              <h3>HWP &amp; Word</h3>
+            </div>
+            <p class="skill-card__subtitle">Document Writing &amp; Formatting</p>
+
+            <ul class="skill-card__tasks">
+              <li>기획서·보고서 및 업무 문서 작성</li>
+              <li>글꼴·문단·여백 설정 및 문서 서식 편집</li>
+              <li>표·이미지 삽입 및 페이지 레이아웃 구성</li>
+              <li>문서·페이지 번호 설정 및 PDF 문서 출력</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__heading">
+              <img src="./assets/images/icn-gpt.svg" alt="">
+              <h3>ChatGPT</h3>
+            </div>
+            <p class="skill-card__subtitle">Content Planning &amp; Ideation</p>
+
+            <ul class="skill-card__tasks">
+              <li>브랜드 기획 및 아이디어 구체화</li>
+              <li>디자인 콘셉트에 맞는 AI 이미지 제작</li>
+              <li>브랜드 소개·배너·상품 설명 문구 초안 작성</li>
+              <li>코드 초안 작성 및 오류 검토 보조</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__heading">
+              <img src="./assets/images/icn-notion.svg" alt="">
+              <h3>Notion</h3>
+            </div>
+            <p class="skill-card__subtitle">Project Management &amp; Documentation</p>
+
+            <ul class="skill-card__tasks">
+              <li>학습 내용 기록 및 정리</li>
+              <li>프로젝트 일정 및 할 일 관리</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-card__heading">
+              <img src="./assets/images/icn-git.svg" alt="">
+              <h3>GitHub</h3>
+            </div>
+            <p class="skill-card__subtitle">Code Management &amp; Collaboration</p>
+
+            <ul class="skill-card__tasks">
+              <li>프로젝트 저장소 생성 및 소스 파일 관리</li>
+              <li>커밋 기록 확인 및 코드 변경 사항 관리</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 디자인 섹션 메인 타이틀 -->
+    <section class="design-intro" id="design" aria-labelledby="design-title">
+      <h2 class="design-intro__title" id="design-title" data-scroll-float>
+        DESIGN
+      </h2>
+    </section>
+
+    <!-- 팝업포스터 -->
+    <section class="poster-gallery" id="popup-posters" aria-labelledby="poster-gallery-title" data-speed="8">
+      <header class="poster-gallery__header">
+        <div>
+          <p class="poster-gallery__eyebrow">DESIGN / 01</p>
+          <h2 id="poster-gallery-title">POPUP POSTER</h2>
+          <p class="poster-gallery__intro">닫기 버튼을 누르기 전에,<br>한 번 더 보고 싶도록</p>
+        </div>
+        <div class="poster-gallery__controls" aria-label="포스터 재생 조절">
+          <button type="button" data-poster-prev aria-label="이전 포스터">←</button>
+          <button type="button" data-poster-play>일시정지</button>
+          <button type="button" data-poster-next aria-label="다음 포스터">→</button>
+        </div>
+      </header>
+      <div class="poster-stage" aria-label="회전하는 팝업 포스터">
+        <div class="poster-ring"></div>
+      </div>
+      <dialog class="poster-dialog design-dialog" aria-labelledby="poster-detail-title"
+        aria-describedby="poster-detail-description">
+        <div class="design-dialog__toolbar"><span>POPUP POSTER</span><button type="button"
+            class="poster-dialog__close design-dialog__close" aria-label="상세 보기 닫기" autofocus>닫기 ×</button>
+        </div>
+        <header class="design-dialog__header">
+          <p class="poster-dialog__brand design-dialog__category"></p>
+          <h3 id="poster-detail-title"></h3>
+          <p id="poster-detail-description" class="design-dialog__description"></p>
+        </header>
+        <figure class="design-dialog__figure">
+          <img class="poster-dialog__image" alt="">
+        </figure>
+      </dialog>
+    </section>
+
+    <!-- 포스터 -->
+    <section class="pd-gallery" id="poster-design" aria-labelledby="pd-title">
+      <div class="pd-gallery__intro">
+        <p class="pd-gallery__eyebrow">DESIGN / 02</p>
+        <h2 class="pd-gallery__title" id="pd-title">POSTER<br>DESIGN</h2>
+        <p class="pd-gallery__description">때로는 선명하게, 때로는 과감하게<br>다양한 표현을 시도한 포스터 디자인입니다</p>
+        <p class="pd-gallery__hint">드래그해서 넘기고,<br>포스터를 눌러 자세히 살펴보세요!</p>
+      </div>
+
+      <div class="pd-gallery__showcase">
+        <div class="pd-gallery__toolbar">
+          <div class="pd-gallery__arrows" aria-label="포스터 이동">
+            <button type="button" data-pd-prev aria-label="이전 포스터" aria-controls="pd-stage">←</button>
+            <button type="button" data-pd-next aria-label="다음 포스터" aria-controls="pd-stage">→</button>
+          </div>
+          <p class="pd-gallery__counter" data-pd-counter aria-live="polite" aria-atomic="true"></p>
+        </div>
+        <div class="pd-gallery__stage" id="pd-stage" tabindex="0" role="group" aria-roledescription="캐러셀"
+          aria-label="포스터 디자인. 좌우 방향키 또는 드래그로 이동">
+        </div>
+        <div class="pd-gallery__caption">
+          <span data-pd-name></span><span>CLICK TO EXPLORE ↗</span>
+        </div>
+        <noscript>포스터 갤러리를 보려면 JavaScript를 활성화해주세요.</noscript>
+      </div>
+
+      <dialog class="pd-dialog design-dialog" aria-labelledby="pd-detail-title"
+        aria-describedby="pd-detail-description">
+        <div class="design-dialog__toolbar"><span>POSTER DESIGN</span><button type="button"
+            class="pd-dialog__close design-dialog__close" aria-label="상세 보기 닫기" autofocus>닫기 ×</button>
+        </div>
+        <header class="design-dialog__header">
+          <p class="pd-dialog__brand design-dialog__category" data-pd-brand></p>
+          <h3 id="pd-detail-title"></h3>
+          <p id="pd-detail-description" class="design-dialog__description"></p>
+        </header>
+        <figure class="design-dialog__figure"><img data-pd-detail-image alt=""></figure>
+      </dialog>
+    </section>
+
+    <!-- 기존 #poster-design 섹션의 닫는 </section> 바로 다음에 추가하세요. -->
+    <section class="bd-gallery" id="banner-design" data-design-panel aria-labelledby="bd-title">
+      <header class="bd-gallery__header">
+        <div>
+          <p class="bd-gallery__eyebrow">DESIGN / 03</p>
+          <h2 class="bd-gallery__title" id="bd-title">BANNER DESIGN</h2>
+        </div>
+        <p class="bd-gallery__intro">짧게 스쳐도,<br>인상은 길게 남도록</p>
+      </header>
+
+      <div class="bd-gallery__body">
+        <div class="bd-gallery__side bd-gallery__side--left">
+          <p class="bd-gallery__label">BRAND</p>
+          <p class="bd-gallery__brand" data-bd-brand>OUR Bakery</p>
+          <p class="bd-gallery__category" data-bd-category>FOOD &amp; LIFESTYLE</p>
+        </div>
+        <div class="bd-gallery__stage" id="bd-stage" data-bd-stage role="group" aria-roledescription="캐러셀"
+          aria-label="배너 작업물. 이미지를 누르면 상세 설명이 열립니다.">
+          <!-- JavaScript가 원본 비율의 배너 카드를 만듭니다. -->
+        </div>
+        <div class="bd-gallery__side bd-gallery__side--right">
+          <p class="bd-gallery__label">PROJECT</p>
+          <p class="bd-gallery__name" data-bd-name>Butter Layer</p>
+          <p class="bd-gallery__hint">이미지를 눌러<br>자세히 살펴보세요 ↗</p>
+        </div>
+      </div>
+      <noscript>
+        <p>배너의 자동 전환과 상세 보기는 JavaScript를 켜면 사용할 수 있습니다.</p>
+        <a href="./assets/images/banner-design/our-Bakery.jpg">OUR Bakery 배너 보기</a>
+        <a href="./assets/images/banner-design/gentle-monster.jpg">Gentle Monster 배너 보기</a>
+        <a href="./assets/images/banner-design/jacquemus.jpg">Jacquemus 배너 보기</a>
+        <a href="./assets/images/banner-design/kurly.jpg">Kurly 배너 보기</a>
+      </noscript>
+
+      <dialog class="bd-dialog design-dialog" aria-labelledby="bd-detail-title"
+        aria-describedby="bd-detail-description">
+        <div class="design-dialog__toolbar"><span>BANNER DESIGN</span><button type="button"
+            class="bd-dialog__close design-dialog__close" data-bd-close autofocus aria-label="상세 보기 닫기">닫기 ×</button>
+        </div>
+        <header class="design-dialog__header">
+          <p class="bd-dialog__brand design-dialog__category" data-bd-detail-brand></p>
+          <h3 id="bd-detail-title"></h3>
+          <p class="bd-dialog__description design-dialog__description" id="bd-detail-description"></p>
+        </header>
+        <figure class="design-dialog__figure"><img data-bd-detail-image alt=""></figure>
+      </dialog>
+    </section>
+
+    <!-- #banner-design의 닫는 </section> 바로 다음에 붙여 넣으세요. -->
+    <section class="dp-gallery" id="product-detail-design" data-design-panel aria-labelledby="dp-title">
+      <header class="dp-gallery__intro">
+        <p class="dp-gallery__eyebrow">DESIGN / 04</p>
+        <h2 class="dp-gallery__title" id="dp-title"><span>PRODUCT</span><span>DETAIL</span><span>PAGE</span></h2>
+        <p class="dp-gallery__description">첫눈에 끌리고,<br>읽을수록 갖고 싶도록</p>
+        <p class="dp-gallery__hint">이미지를 눌러 자세히 살펴보세요.</p>
+        <button class="dp-gallery__toggle" type="button" data-dp-toggle aria-pressed="false">자동 이동 정지</button>
+      </header>
+      <div class="dp-gallery__works" data-dp-works aria-label="상세페이지 디자인 작업물"></div>
+      <noscript>
+        <p><a href="./assets/images/product-detail/tomato.jpg">토마토 상세페이지</a> · <a
+            href="./assets/images/product-detail/lotion.jpg">바디로션 상세페이지</a></p>
+      </noscript>
+      <dialog class="dp-dialog design-dialog" aria-labelledby="dp-dialog-title"
+        aria-describedby="dp-dialog-description">
+        <div class="design-dialog__toolbar"><span>PRODUCT DETAIL PAGE</span><button type="button" data-dp-close
+            autofocus class="design-dialog__close" aria-label="상세 보기 닫기">닫기 ×</button></div>
+        <header class="design-dialog__header">
+          <p data-dp-category class="design-dialog__category"></p>
+          <h3 id="dp-dialog-title"></h3>
+          <p id="dp-dialog-description" class="design-dialog__description"></p>
+          <p class="design-dialog__hint">아래로 스크롤하면 전체 디자인을 볼 수 있습니다.</p>
+        </header>
+        <figure class="design-dialog__figure"><img data-dp-image alt=""></figure>
+      </dialog>
+    </section>
+
+
+    <!-- 상세페이지 섹션 바로 다음: 다섯 번째 가로 패널 / 태블릿부터 세로 배치 -->
+    <section class="em-gallery" id="emoticon-design" data-design-panel aria-labelledby="em-title">
+      <div class="em-gallery__left">
+        <header class="em-gallery__intro">
+          <p class="em-gallery__eyebrow">DESIGN / 05</p>
+          <h2 class="em-gallery__title" id="em-title"><span>EMOTICON</span><span>DESIGN</span></h2>
+          <p class="em-gallery__name">대학생이고요, 디자인을 해요</p>
+          <p class="em-gallery__description">과제에 울고, 커피로 버티고, 종강에 웃는<br>디자인 전공생의 하루를 담았습니다.</p>
+        </header>
+
+        <div class="em-chat" id="em-chat" tabindex="-1" role="region" aria-label="과제 생존방, 이모티콘 대화 미리보기">
+          <header class="em-chat__header">
+            <span class="em-chat__avatar" aria-hidden="true"><img src="./assets/images/emoticon/emoticon1.png" alt=""
+                width="1000" height="1000" loading="lazy"></span>
+            <div>
+              <h3>과제 생존방</h3>
+              <p>오늘의 기분을 대신 전해요</p>
+            </div>
+            <span class="em-chat__preview">PREVIEW</span>
+          </header>
+          <div class="em-chat__body">
+            <p class="em-chat__sender">친구</p>
+            <p class="em-chat__question" data-em-question>오늘도 과제하러 가?</p>
+            <div class="em-chat__reply" data-em-reply>
+              <img data-em-image src="./assets/images/emoticon/emoticon1.png" alt="터벅터벅 나의 일상" width="1000"
+                height="1000" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <footer class="em-chat__footer">
+            <p data-em-name>터벅터벅 나의 일상</p>
+            <button type="button" class="em-chat__motion" data-em-motion aria-pressed="false" hidden>움직임 멈추기</button>
+          </footer>
+        </div>
+      </div>
+
+      <div class="em-browser">
+        <div class="em-tabs" role="tablist" aria-label="이모티콘 보기 방식">
+          <button type="button" role="tab" id="em-tab-overview" aria-controls="em-panel-overview" aria-selected="true"
+            tabindex="0" data-em-tab="overview"><span class="em-label-wide">전체 모음</span><span class="em-label-short"
+              aria-hidden="true">전체</span></button>
+          <button type="button" role="tab" id="em-tab-static" aria-controls="em-panel-static" aria-selected="false"
+            tabindex="-1" data-em-tab="static"><span class="em-label-wide">정지형 24</span><span class="em-label-short"
+              aria-hidden="true">정지 24</span></button>
+          <button type="button" role="tab" id="em-tab-motion" aria-controls="em-panel-motion" aria-selected="false"
+            tabindex="-1" data-em-tab="motion"><span class="em-label-wide">움직이는 12</span><span class="em-label-short"
+              aria-hidden="true">움직임 12</span></button>
+        </div>
+
+        <div class="em-panel em-panel--overview" id="em-panel-overview" role="tabpanel"
+          aria-labelledby="em-tab-overview" tabindex="0">
+          <button type="button" class="em-overview" data-em-open aria-haspopup="dialog" aria-controls="em-dialog"
+            aria-label="전체 이모티콘 모음과 작품 설명 크게 보기">
+            <span class="em-overview__image"><img src="./assets/images/emoticon/emoticon-blue.jpg"
+                alt="디자인 전공생의 일상을 표현한 토끼 이모티콘 24종 전체 모음" width="6500" height="4300" loading="lazy"
+                decoding="async"></span>
+            <span class="em-overview__caption"><span>24가지 표정으로 보내는 하루</span><span>전체 이미지 크게 보기 ↗</span></span>
+          </button>
+          <p class="em-browser__hint">전체 작품을 먼저 살펴보고, 탭을 바꿔 대화 속에 넣어보세요.</p>
+        </div>
+
+        <div class="em-panel" id="em-panel-static" role="tabpanel" aria-labelledby="em-tab-static" tabindex="0" hidden>
+          <div class="em-grid" data-em-grid="static"></div>
+          <div class="em-pagination" aria-label="정지형 이모티콘 페이지">
+            <button type="button" data-em-prev="static" aria-label="정지형 이전 페이지">←</button>
+            <span data-em-page="static" aria-live="polite" aria-atomic="true">1 / 2</span>
+            <button type="button" data-em-next="static" aria-label="정지형 다음 페이지">→</button>
+          </div>
+          <p class="em-browser__hint">지금 기분을 골라보세요. 대화에 대신 보내드릴게요.</p>
+        </div>
+        <div class="em-panel" id="em-panel-motion" role="tabpanel" aria-labelledby="em-tab-motion" tabindex="0" hidden>
+          <div class="em-grid" data-em-grid="motion"></div>
+          <div class="em-pagination" aria-label="움직이는 이모티콘 페이지">
+            <button type="button" data-em-prev="motion" aria-label="움직이는 이모티콘 이전 페이지">←</button>
+            <span data-em-page="motion" aria-live="polite" aria-atomic="true">1 / 1</span>
+            <button type="button" data-em-next="motion" aria-label="움직이는 이모티콘 다음 페이지">→</button>
+          </div>
+          <p class="em-browser__hint">선택한 이모티콘이 대화 속에서 움직여요.</p>
+        </div>
+        <div class="em-browser__actions">
+          <button type="button" class="em-back-chat" data-em-back hidden>대화에서 보기 ↑</button>
+          <button type="button" class="em-work-link" data-em-open aria-haspopup="dialog" aria-controls="em-dialog">작업 소개
+            보기 ↗</button>
+        </div>
+      </div>
+      <p class="em-sr" data-em-announcement role="status" aria-live="polite" aria-atomic="true"></p>
+      <noscript>
+        <p>대화 체험에는 JavaScript가 필요합니다. <a href="./assets/images/emoticon/emoticon-blue.jpg">전체 모음 이미지 보기</a></p>
+      </noscript>
+
+      <dialog class="em-dialog design-dialog" id="em-dialog" aria-labelledby="em-dialog-title"
+        aria-describedby="em-dialog-description">
+        <div class="design-dialog__toolbar"><span>EMOTICON DESIGN</span><button type="button"
+            class="design-dialog__close" data-em-close aria-label="이모티콘 상세 보기 닫기" autofocus>닫기 ×</button></div>
+        <header class="design-dialog__header">
+          <p class="design-dialog__category">CHARACTER &amp; EMOTICON · 정지형 24종 / 모션 12종</p>
+          <h3 id="em-dialog-title">대학생이고요, 디자인을 해요</h3>
+          <p class="design-dialog__description" id="em-dialog-description">과제와 피드백, 밤샘과 종강을 오가는 디자인 전공생의 일상을 토끼 캐릭터로
+            표현했습니다. 길게 늘어지는 귀와 과장된 표정으로 감정을 드러내고, 실제 대화에서 사용할 법한 문구를 더해 공감과 웃음을 전하고자 했습니다.</p>
+          <p class="design-dialog__hint">정지형 전체 모음입니다. 움직이는 버전은 섹션의 ‘움직이는 12’ 탭에서 체험할 수 있습니다.</p>
+        </header>
+        <figure class="design-dialog__figure"><img data-em-full-image alt="디자인하는 대학생 토끼 이모티콘 24종 전체 모음" width="6500"
+            height="4300" decoding="async"></figure>
+      </dialog>
+    </section>
+
+    <section class="ws-section" id="website" aria-labelledby="ws-title">
+      <header class="ws-heading">
+        <p>SELECTED WEB WORKS</p>
+        <h2 id="ws-title">WEBSITE</h2>
+        <p>브랜드의 분위기를 담고, 사용자의 흐름을 그립니다</p>
+      </header>
+      <article class="ws-project ws-project--modam" data-website="modam" aria-labelledby="ws-modam-title">
+        <div class="ws-intro">
+          <p class="ws-eyebrow">01 / 개인 프로젝트</p>
+          <img class="ws-logo" src="./assets/images/website/modam/modam-logo.svg" alt="MODAM" loading="lazy">
+          <h3 id="ws-modam-title">취향을 모으고,<br>일상을 채우는 공간</h3>
+          <p class="ws-description">가구를 고르는 순간부터 공간을 상상하는 순간까지. 따뜻한 이미지와 정돈된 상품 구성으로 취향을 발견하는 가구 쇼핑몰을 디자인했습니다.</p>
+          <dl class="ws-meta">
+            <dt>작업 유형</dt>
+            <dd>개인 프로젝트</dd>
+            <dt>담당 범위</dt>
+            <dd data-ws-role></dd>
+          </dl>
+          <p class="ws-status" data-ws-status></p>
+          <div class="ws-actions"><button type="button" data-ws-open>디자인 살펴보기 ↗</button><span data-ws-link></span></div>
+        </div>
+        <div class="ws-preview">
+          <div class="ws-pages" role="group" aria-label="MODAM 미리보기 페이지"><button type="button" data-ws-page="main"
+              aria-pressed="true">메인</button><button type="button" data-ws-page="product-list" aria-pressed="false">상품
+              목록</button><button type="button" data-ws-page="product-detail" aria-pressed="false">상품 상세</button></div>
+          <div class="ws-devices">
+            <div class="ws-browser">
+              <div class="ws-browserbar"><span aria-hidden="true">● ● ●</span><span>MODAM / DESIGN PREVIEW</span></div>
+              <div class="ws-window" tabindex="0"
+                aria-label="MODAM PC 디자인. 마우스를 올리거나 초점을 맞추면 아래로 이동합니다. 직접 스크롤할 수도 있습니다."><img data-ws-pc
+                  src="./assets/images/website/modam/main-pc.png" alt="MODAM 메인 PC 디자인" loading="lazy" width="1920"
+                  height="4994"></div>
+            </div>
+            <div class="ws-phone">
+              <div class="ws-phonebar" aria-hidden="true"></div>
+              <div class="ws-phonewindow" tabindex="0" aria-label="MODAM 모바일 디자인. 직접 스크롤하여 확인하세요."><img data-ws-mo
+                  src="./assets/images/website/modam/main-mo.png" alt="MODAM 메인 모바일 디자인" loading="lazy" width="804"
+                  height="8490"></div>
+            </div>
+          </div>
+          <p class="ws-hint">화면 위에 커서를 올리면 천천히 내려갑니다. 터치 화면에서는 이미지 안을 스크롤해 보세요.</p>
+        </div>
+      </article>
+      <article class="ws-project ws-project--tarty" data-website="tarty" aria-labelledby="ws-tarty-title">
+        <div class="ws-intro">
+          <p class="ws-eyebrow">02 / 팀 프로젝트</p>
+          <img class="ws-logo" src="./assets/images/website/tarty/tarty-logo.svg" alt="TARTY" loading="lazy">
+          <h3 id="ws-tarty-title">눈으로 먼저 만나는,<br>달콤한 하루</h3>
+          <p class="ws-description">디저트의 색감과 부드러운 여백으로 브랜드의 달콤한 분위기를 담았습니다. 메뉴를 탐색하고 브랜드의 이야기를 만나는 웹사이트입니다.</p>
+          <dl class="ws-meta">
+            <dt>작업 유형</dt>
+            <dd>팀 프로젝트</dd>
+            <dt>담당 범위</dt>
+            <dd data-ws-role></dd>
+          </dl>
+          <p class="ws-status" data-ws-status></p>
+          <div class="ws-actions"><button type="button" data-ws-open>디자인 살펴보기 ↗</button><span data-ws-link></span></div>
+        </div>
+        <div class="ws-preview">
+          <div class="ws-pages" role="group" aria-label="TARTY 미리보기 페이지"><button type="button" data-ws-page="main"
+              aria-pressed="true">메인</button><button type="button" data-ws-page="product-list" aria-pressed="false">상품
+              목록</button><button type="button" data-ws-page="product-detail" aria-pressed="false">상품 상세</button><button
+              type="button" data-ws-page="event" aria-pressed="false">이벤트</button><button type="button"
+              data-ws-page="story" aria-pressed="false">브랜드 스토리</button></div>
+          <div class="ws-devices">
+            <div class="ws-browser">
+              <div class="ws-browserbar"><span aria-hidden="true">● ● ●</span><span>TARTY / DESIGN PREVIEW</span></div>
+              <div class="ws-window" tabindex="0"
+                aria-label="TARTY PC 디자인. 마우스를 올리거나 초점을 맞추면 아래로 이동합니다. 직접 스크롤할 수도 있습니다."><img data-ws-pc
+                  src="./assets/images/website/tarty/main-pc.png" alt="TARTY 메인 PC 디자인" loading="lazy" width="1920"
+                  height="3691"></div>
+            </div>
+            <div class="ws-phone">
+              <div class="ws-phonebar" aria-hidden="true"></div>
+              <div class="ws-phonewindow" tabindex="0" aria-label="TARTY 모바일 디자인. 직접 스크롤하여 확인하세요."><img data-ws-mo
+                  src="./assets/images/website/tarty/main-mo.png" alt="TARTY 메인 모바일 디자인" loading="lazy" width="804"
+                  height="5622"></div>
+            </div>
+          </div>
+          <p class="ws-hint">화면 위에 커서를 올리면 천천히 내려갑니다. 터치 화면에서는 이미지 안을 스크롤해 보세요.</p>
+        </div>
+      </article>
+    </section>
+    <dialog class="ws-dialog design-dialog" aria-labelledby="ws-dialog-title" aria-describedby="ws-dialog-description">
+      <div class="design-dialog__toolbar"><span>WEBSITE DESIGN</span><button class="design-dialog__close" type="button"
+          autofocus>닫기 ×</button></div>
+      <header class="design-dialog__header">
+        <p class="design-dialog__category" data-ws-category></p>
+        <h3 id="ws-dialog-title"></h3>
+        <p class="design-dialog__description" id="ws-dialog-description"></p>
+        <dl class="ws-meta">
+          <dt>담당 범위</dt>
+          <dd data-ws-dialog-role></dd>
+        </dl>
+        <p class="ws-status" data-ws-dialog-status></p>
+      </header>
+      <div class="ws-dialog-controls">
+        <div class="ws-pages" data-ws-dialog-pages role="group" aria-label="디자인 페이지"></div>
+        <div class="ws-pages" data-ws-dialog-devices role="group" aria-label="화면 크기"><button type="button"
+            data-device="pc" aria-pressed="true">PC</button><button type="button" data-device="pad"
+            aria-pressed="false">Tablet</button><button type="button" data-device="mo"
+            aria-pressed="false">Mobile</button></div>
+        <p data-ws-caption aria-live="polite"></p>
+      </div>
+      <figure class="design-dialog__figure"><img data-ws-detail alt=""></figure>
+    </dialog>
+
+    <!-- ABOUT: 문구는 이 섹션에서, 연락처/이력서 링크는 js/about.js에서 수정하세요. -->
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <header class="about-heading" data-about-reveal>
+        <p class="about-eyebrow">ABOUT ME / NEXT CHAPTER</p>
+        <h2 id="about-title">보기 좋은 화면에,<br>쓰기 좋은 이유를 더합니다</h2>
+      </header>
+      <div class="about-body">
+        <div class="about-story" data-about-reveal>
+          <p class="about-label">조금 더, 저의 이야기</p>
+          <h3>여러 시선을 모아,<br>하나의 화면을 만듭니다</h3>
+          <p>시각·산업디자인과 게임그래픽을 공부하며 이미지와 공간을 바라보는 다양한 시선을 길렀습니다.</p>
+          <p>이제는 그 경험을 웹이라는 화면에 담아, 보는 즐거움과 사용하는 편안함을 함께 디자인합니다.</p>
+          <!-- <div class="about-signature"><span class="about-dot" aria-hidden="true"></span>웹디자이너 김하경</div> -->
+        </div>
+        <ol class="about-values" aria-label="세 가지 작업 태도">
+          <li data-about-reveal><span class="about-number" aria-hidden="true">01</span>
+            <div>
+              <h3>이유를 담아 디자인합니다</h3>
+              <p>색과 이미지, 배치가 어떤 인상을 만드는지 고민하며 화면에 어울리는 표현을 찾습니다.</p>
+            </div>
+          </li>
+          <li data-about-reveal><span class="about-number" aria-hidden="true">02</span>
+            <div>
+              <h3>피드백으로 다듬습니다</h3>
+              <p>팀 작업에서 서로의 의견을 듣고 조율하며, 더 나은 방향으로 디자인을 발전시킵니다.</p>
+            </div>
+          </li>
+          <li data-about-reveal><span class="about-number" aria-hidden="true">03</span>
+            <div>
+              <h3>끝까지 책임집니다</h3>
+              <p>맡은 일은 꾸준히 완성하고, 부족한 부분은 배우며 채워갑니다.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="about-contact" data-about-reveal>
+        <div>
+          <p class="about-eyebrow">LET’S CREATE TOGETHER</p>
+          <h3>보는 즐거움과 쓰는 편안함,<br>함께 만들어가겠습니다</h3>
+        </div>
+        <div class="about-contact-links">
+          <a class="about-email" href="mailto:clolingtv@gmail.com" data-about-email>clolingtv@gmail.com <span
+              aria-hidden="true">↗</span></a>
+          <div class="about-actions"><button type="button" data-about-copy hidden>이메일 복사 <span
+                aria-hidden="true">＋</span></button><a data-about-resume hidden target="_blank"
+              rel="noopener noreferrer">이력서 보기 ↗</a></div>
+          <p class="about-feedback" data-about-feedback role="status" aria-live="polite"></p>
+        </div>
+      </div>
+      <footer class="about-footer">
+        <p>© <span data-about-year>2026</span> KIM HAKYUNG. Portfolio</p><a href="#main">맨 위로 <span
+            aria-hidden="true">↑</span></a>
+      </footer>
+    </section>
+  </main>
+
+
+
+
+
+  <script>
+    (() => {
+      const button = document.querySelector(
+        ".hero__portfolio-button"
+      );
+
+      const image = button?.querySelector(
+        ".hero__portfolio_img"
+      );
+
+      if (!button || !image) return;
+
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+      button.addEventListener("mouseenter", () => {
+        if (reducedMotion.matches) return;
+
+        // 재생 중에 다시 클릭해도 처음부터 시작
+        image.classList.remove("is-bouncing");
+        void image.offsetWidth;
+        image.classList.add("is-bouncing");
+      });
+
+      image.addEventListener("animationend", (event) => {
+        if (event.animationName === "portfolio-jello") {
+          image.classList.remove("is-bouncing");
+        }
+      });
+    })();
+  </script>
+  <script>
+    (() => {
+      const originalNav = document.querySelector(".hero-nav");
+
+      if (!originalNav || document.querySelector(".floating-nav")) {
+        return;
+      }
+
+      // 기존 메뉴를 복제해 고정 메뉴로 사용
+      const floatingNav = originalNav.cloneNode(true);
+
+      floatingNav.className = "floating-nav";
+      floatingNav.removeAttribute("id");
+      floatingNav.setAttribute("aria-label", "고정 포트폴리오 메뉴");
+      floatingNav.setAttribute("aria-hidden", "true");
+      floatingNav.inert = true;
+
+      // 복제된 요소의 ID 중복 방지
+      floatingNav.querySelectorAll("[id]").forEach((element) => {
+        element.removeAttribute("id");
+      });
+
+      document.body.append(floatingNav);
+
+      let frame = 0;
+      let isVisible = false;
+
+      function updateNav() {
+        frame = 0;
+
+        // 기존 메뉴 전체가 화면 위로 사라지면 표시
+        const shouldShow =
+          originalNav.getBoundingClientRect().bottom <= 0;
+
+        if (shouldShow === isVisible) return;
+
+        isVisible = shouldShow;
+
+        // 키보드 사용 중 메뉴가 숨겨지면 원래 링크로 초점 이동
+        if (!shouldShow && floatingNav.contains(document.activeElement)) {
+          const focusedLink = document.activeElement.closest("a");
+          const originalLink = Array.from(
+            originalNav.querySelectorAll("a")
+          ).find((link) =>
+            link.getAttribute("href") === focusedLink?.getAttribute("href")
+          );
+
+          originalLink?.focus({ preventScroll: true });
+        }
+
+        floatingNav.classList.toggle("is-visible", shouldShow);
+        floatingNav.setAttribute("aria-hidden", String(!shouldShow));
+        floatingNav.inert = !shouldShow;
+      }
+
+      function requestUpdate() {
+        if (frame) return;
+        frame = requestAnimationFrame(updateNav);
+      }
+
+      window.addEventListener("scroll", requestUpdate, {
+        passive: true
+      });
+
+      window.addEventListener("resize", requestUpdate);
+      window.addEventListener("pageshow", requestUpdate);
+
+      new ResizeObserver(requestUpdate).observe(originalNav);
+
+      updateNav();
+    })();
+  </script>
+
+  <!-- 하트 안의 색상을 변환하는 필터 -->
+  <svg class="cursor-filter" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true"
+    focusable="false">
+    <defs>
+      <filter id="heart-color-swap" color-interpolation-filters="sRGB">
+        <feComponentTransfer>
+          <feFuncR type="linear" slope="-1" intercept="1" />
+          <feFuncG type="linear" slope="-1" intercept="1.0470588" />
+          <feFuncB type="linear" slope="-1" intercept="1.0666667" />
+        </feComponentTransfer>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- 커서를 따라다니는 하트 -->
+  <div class="heart-cursor" aria-hidden="true"></div>
+  <script>
+    (() => {
+      const heart = document.querySelector(".heart-cursor");
+      const filter = document.getElementById("heart-color-swap");
+
+      if (!heart || !filter) return;
+
+      const finePointer = matchMedia(
+        "(hover: hover) and (pointer: fine)"
+      );
+
+      const reducedMotion = matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+      /* CSS 변수의 실제 RGB 색상 읽기 */
+      const canvas = document.createElement("canvas");
+      canvas.width = canvas.height = 1;
+
+      const context = canvas.getContext("2d");
+      if (!context) return;
+
+      function readColor(variable, fallback) {
+        const value = getComputedStyle(document.documentElement)
+          .getPropertyValue(variable)
+          .trim();
+
+        context.clearRect(0, 0, 1, 1);
+        context.fillStyle = fallback;
+        context.fillStyle = value || fallback;
+        context.fillRect(0, 0, 1, 1);
+
+        return context.getImageData(0, 0, 1, 1).data;
+      }
+
+      function updateColors() {
+        const dark = readColor("--main-black", "#0e1822");
+        const light = readColor("--background", "#f1f3ee");
+
+        ["feFuncR", "feFuncG", "feFuncB"].forEach((tag, index) => {
+          filter.querySelector(tag).setAttribute(
+            "intercept",
+            (dark[index] + light[index]) / 255
+          );
+        });
+      }
+
+      updateColors();
+
+      let x = 0;
+      let y = 0;
+      let targetX = 0;
+      let targetY = 0;
+      let frame = 0;
+      let lastTime = 0;
+      let visible = false;
+
+      function draw() {
+        heart.style.transform =
+          `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+      }
+
+      function animate(now) {
+        frame = 0;
+
+        const delta = lastTime
+          ? Math.min((now - lastTime) / 1000, 0.05)
+          : 1 / 60;
+
+        lastTime = now;
+
+        /* 숫자가 클수록 커서를 빠르게 따라갑니다 */
+        const follow = 1 - Math.exp(-14 * delta);
+
+        x += (targetX - x) * follow;
+        y += (targetY - y) * follow;
+
+        if (Math.hypot(targetX - x, targetY - y) < 0.1) {
+          x = targetX;
+          y = targetY;
+          draw();
+          lastTime = 0;
+          return;
+        }
+
+        draw();
+        frame = requestAnimationFrame(animate);
+      }
+
+      function hide() {
+        visible = false;
+        heart.classList.remove("is-visible");
+
+        cancelAnimationFrame(frame);
+        frame = 0;
+        lastTime = 0;
+      }
+
+      window.addEventListener("pointermove", (event) => {
+        if (
+          event.pointerType !== "mouse" ||
+          !finePointer.matches ||
+          reducedMotion.matches
+        ) {
+          hide();
+          return;
+        }
+
+        targetX = event.clientX;
+        targetY = event.clientY;
+
+        if (!visible) {
+          x = targetX;
+          y = targetY;
+          draw();
+
+          visible = true;
+          heart.classList.add("is-visible");
+        }
+
+        if (!frame) {
+          frame = requestAnimationFrame(animate);
+        }
+      }, { passive: true });
+
+      document.documentElement.addEventListener("pointerleave", hide);
+      window.addEventListener("blur", hide);
+      finePointer.addEventListener("change", hide);
+      reducedMotion.addEventListener("change", hide);
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) hide();
+      });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const sentences = [
+        document.querySelector(".hero__intro--left"),
+        document.querySelector(".hero__intro--right")
+      ].filter(Boolean);
+
+      const reducedMotion = matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+      if (!sentences.length || reducedMotion.matches) return;
+      if (sentences.some(element => element.dataset.typingReady)) return;
+
+      const options = {
+        startDelay: 400,     // 시작 전 대기 시간
+        typingSpeed: 70,     // 한 글자 입력 간격
+        sentencePause: 400,  // 두 문장 사이 대기 시간
+        cursorDelay: 700     // 완료 후 커서 유지 시간
+      };
+
+      const characters = [];
+
+      let timer = 0;
+      let index = 0;
+      let current = null;
+      let finished = false;
+
+      sentences.forEach((element) => {
+        const text = element.textContent
+          .replace(/\s+/g, " ")
+          .trim();
+
+        element.dataset.typingReady = "true";
+
+        const accessibleText = document.createElement("span");
+        accessibleText.className = "intro-typing__sr-only";
+        accessibleText.textContent = text;
+
+        const visualText = document.createElement("span");
+        visualText.setAttribute("aria-hidden", "true");
+
+        const letters = Array.from(text);
+        let word = null;
+
+        letters.forEach((letter, letterIndex) => {
+          const span = document.createElement("span");
+
+          span.className = "intro-typing__char";
+          span.textContent = letter;
+
+          if (/\s/.test(letter)) {
+            visualText.append(span);
+            word = null;
+          } else {
+            if (!word) {
+              word = document.createElement("span");
+              word.className = "intro-typing__word";
+              visualText.append(word);
+            }
+            word.append(span);
+          }
+
+          characters.push({
+            element: span,
+            letter,
+            isLineEnd: letterIndex === letters.length - 1
+          });
+        });
+
+        element.replaceChildren(accessibleText, visualText);
+      });
+
+      function finish() {
+        finished = true;
+        clearTimeout(timer);
+
+        characters.forEach(({ element }) => {
+          element.classList.add("is-visible");
+          element.classList.remove("is-cursor");
+        });
+      }
+
+      function typeNext() {
+        if (finished) return;
+
+        if (index >= characters.length) {
+          timer = setTimeout(finish, options.cursorDelay);
+          return;
+        }
+
+        current?.classList.remove("is-cursor");
+
+        const item = characters[index];
+
+        current = item.element;
+        current.classList.add("is-visible", "is-cursor");
+
+        index++;
+
+        let delay = options.typingSpeed;
+
+        // 쉼표 등에서는 잠시 쉬어 자연스럽게 입력
+        if (/[,.!?]/.test(item.letter)) {
+          delay *= 3;
+        }
+
+        if (item.isLineEnd && index < characters.length) {
+          delay = options.sentencePause;
+        }
+
+        timer = setTimeout(typeNext, delay);
+      }
+
+      // 폰트가 준비되면 입력 시작
+      Promise.all([
+        document.fonts.ready,
+        window.portfolioIntro?.typingReady ?? Promise.resolve()
+      ]).then(() => {
+        if (!finished) {
+          timer = setTimeout(typeNext, options.startDelay);
+        }
+      });
+
+      reducedMotion.addEventListener("change", (event) => {
+        if (event.matches) finish();
+      });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      async function playIntro() {
+        const intro = window.portfolioIntro;
+        const overlay = document.querySelector(".site-intro");
+        const heart = document.querySelector(".site-intro__heart");
+
+        if (!intro || intro.finished) return;
+
+        if (!overlay || !heart) {
+          intro.finish();
+          return;
+        }
+
+        const reducedMotion = matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        );
+
+        let typingTimer;
+
+        const onMotionChange = (event) => {
+          if (event.matches) intro.finish();
+        };
+
+        reducedMotion.addEventListener("change", onMotionChange);
+
+        function animate(element, keyframes, options) {
+          if (!element) return;
+
+          const animation = element.animate(keyframes, {
+            fill: "backwards",
+            ...options
+          });
+
+          intro.animations.push(animation);
+        }
+
+        try {
+          await document.fonts.ready;
+
+          if (intro.finished || reducedMotion.matches) {
+            intro.finish();
+            return;
+          }
+
+          /* 1. 픽셀 하트가 나타나며 뾰잉 */
+          animate(heart, [
+            {
+              opacity: 0,
+              transform: "scale(0.4)",
+              offset: 0
+            },
+            {
+              opacity: 1,
+              transform: "scale(1.2, 0.8)",
+              offset: 0.3
+            },
+            {
+              opacity: 1,
+              transform: "scale(0.85, 1.15)",
+              offset: 0.45
+            },
+            {
+              opacity: 1,
+              transform: "scale(1.08, 0.92)",
+              offset: 0.65
+            },
+            {
+              opacity: 1,
+              transform: "scale(1)",
+              offset: 1
+            }
+          ], {
+            duration: 800,
+            easing: "ease"
+          });
+
+          /* 2. 인트로 배경이 위로 걷힘 */
+          animate(overlay, [
+            { transform: "translateY(0)" },
+            { transform: "translateY(-100%)" }
+          ], {
+            delay: 700,
+            duration: 750,
+            easing: "cubic-bezier(0.76, 0, 0.24, 1)",
+            fill: "both"
+          });
+
+          /* 3. Beyond → The Basics 순서로 등장 */
+          document.querySelectorAll(
+            ".hero__title > span"
+          ).forEach((line, index) => {
+            animate(line, [
+              {
+                opacity: 0,
+                transform: "translateY(1.5rem)",
+                clipPath: "inset(100% 0 0 0)"
+              },
+              {
+                opacity: 1,
+                transform: "translateY(0)",
+                clipPath: "inset(0% 0 0 0)"
+              }
+            ], {
+              delay: 900 + index * 160,
+              duration: 700,
+              easing: "cubic-bezier(0.22, 1, 0.36, 1)"
+            });
+          });
+
+          /* 이름과 상단 소개 문구 등장 */
+          document.querySelectorAll(
+            ".name-mark, .hero__intro"
+          ).forEach((element) => {
+            animate(element, [
+              { opacity: 0 },
+              { opacity: 1 }
+            ], {
+              delay: 950,
+              duration: 400,
+              easing: "ease-out"
+            });
+          });
+
+          /* 화면이 열릴 때 기존 타이핑 효과 시작 */
+          typingTimer = setTimeout(() => {
+            intro.startTyping();
+          }, 950);
+
+          /* 4. portfolio.svg가 등장하며 살짝 튕김 */
+          animate(
+            document.querySelector(".hero__portfolio_img"),
+            [
+              {
+                opacity: 0,
+                transform: "scale(0.85)",
+                offset: 0
+              },
+              {
+                opacity: 1,
+                transform: "scale(1.2, 0.8)",
+                offset: 0.3
+              },
+              {
+                opacity: 1,
+                transform: "scale(0.85, 1.15)",
+                offset: 0.45
+              },
+              {
+                opacity: 1,
+                transform: "scale(1.08, 0.92)",
+                offset: 0.65
+              },
+              {
+                opacity: 1,
+                transform: "scale(1)",
+                offset: 1
+              }
+            ],
+            {
+              delay: 1450,
+              duration: 900,
+              easing: "ease"
+            }
+          );
+
+          /* 5. 메뉴가 왼쪽부터 차례로 등장 */
+          document.querySelectorAll(
+            ".hero-nav .hero-nav__link"
+          ).forEach((link, index) => {
+            animate(link, [
+              {
+                opacity: 0,
+                transform: "translateY(0.8rem)"
+              },
+              {
+                opacity: 1,
+                transform: "translateY(0)"
+              }
+            ], {
+              delay: 1700 + index * 60,
+              duration: 500,
+              easing: "cubic-bezier(0.22, 1, 0.36, 1)"
+            });
+          });
+
+          await Promise.allSettled(
+            intro.animations.map((animation) => animation.finished)
+          );
+        } finally {
+          clearTimeout(typingTimer);
+          reducedMotion.removeEventListener("change", onMotionChange);
+          intro.finish();
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", playIntro, {
+          once: true
+        });
+      } else {
+        playIntro();
+      }
+    })();
+  </script>
+</body>
+
+</html>
