@@ -10,22 +10,22 @@
   const projects = [
     {
       image: './assets/images/product-detail/tomato.jpg',
-      title: '한 입 전에, 한눈에 반하는 토마토',
+      title: '오늘도 멋진 한 입',
       category: 'FOOD · 토마토 상세페이지',
       description: '탐스럽게 익은 토마토의 색과 질감을 크게 담아 신선한 첫인상을 만들었습니다. 빨강과 초록으로 제품의 개성을 살리고, 파란색 구간으로 정보의 흐름을 구분했습니다. 제품 소개부터 활용 레시피, 포장 안내까지 자연스럽게 읽히도록 구성한 상세페이지입니다.'
     },
     {
       image: './assets/images/product-detail/lotion.jpg',
-      title: '부드러움을 먼저 보여주는 한 페이지',
+      title: '구름같이 편하고 촉촉한 하루',
       category: 'BEAUTY · 바디로션 상세페이지',
       description: '차분한 하늘색과 깨끗한 여백으로 바디로션의 부드러운 인상을 표현했습니다. 제품 사진과 크림의 질감, 사용 장면을 연결하고 곡선과 물결 형태로 화면의 흐름을 이어갔습니다. 제품의 특징과 성분 정보를 단계적으로 읽을 수 있도록 정리했습니다.'
     },
     {
       // 세 번째 작업이 완성되면 아래 4개 항목만 바꾸세요.
-      image: './assets/images/product-detail/tomato.jpg',
-      title: '다음 이야기를 준비하고 있어요',
-      category: 'COMING SOON · 임시 이미지',
-      description: '새로운 상세페이지 작업이 들어갈 자리입니다. 현재는 레이아웃과 움직임을 확인할 수 있도록 토마토 상세페이지를 임시로 배치했습니다.'
+      image: './assets/images/product-detail/plate.jpg',
+      title: '오늘의 식탁에 취향 한 접시',
+      category: 'TABLEWARE · 접시 상세페이지',
+      description: '부드러운 파스텔 컬러와 도톰한 테두리의 매력을 담은 테이블웨어 상세페이지입니다. 크림 톤 배경과 자연광이 드는 사진으로 따뜻한 분위기를 만들고, 컬러별 음식 연출을 통해 식탁 위 활용 모습을 보여줍니다. 제품의 질감부터 색상, 크기와 관리 방법까지 차례로 배치해 감성적인 이미지와 구매에 필요한 정보를 함께 전달했습니다.'
     }
   ];
   const root = document.querySelector('#product-detail-design');
