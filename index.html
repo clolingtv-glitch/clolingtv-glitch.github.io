@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="사용자의 경험을 디자인하는 웹디자이너 김하경의 포트폴리오" />
   <title>KIM HAKYUNG | Portfolio</title>
-
-  <meta property="og:image" content="https://clolingtv-glitch.github.io/assets/images/kimhakyung-Portfolio.jpg" />
-
   <script>
     (() => {
       const root = document.documentElement;
@@ -70,7 +67,7 @@
   <link rel="stylesheet" href="./css/common.css">
 
   <link rel="stylesheet" href="./css/poster-motion.css">
-  <script src="./js/poster-motion.js?v=2" defer></script>
+  <script src="./js/poster-motion.js?v=20260929" defer></script>
 
   <link rel="stylesheet" href="./css/hero-warp.css">
   <script src="./js/hero-warp.js" defer></script>
@@ -97,12 +94,28 @@
   <script src="./js/emoticon-design.js?v=1" defer></script>
   <link rel="stylesheet" href="./css/website-design.css?v=1">
   <script src="./js/website-projects.js?v=1" defer></script>
-  <script src="./js/website-design.js?v=1" defer></script>
+  <script src="./js/website-design.js?v=20260929" defer></script>
   <link rel="stylesheet" href="./css/about.css">
   <script src="./js/about.js" defer></script>
   <link rel="stylesheet" href="./css/profile-refresh.css">
   <script src="./js/profile-refresh.js"></script>
   <link rel="stylesheet" href="./css/interaction-update.css?v=20260928">
+  <!-- 링크 미리보기: 배포 주소가 바뀌면 og:url 및 이미지의 전체 주소도 변경하세요. -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="김하경 포트폴리오">
+  <meta property="og:title" content="김하경 | 웹디자이너 포트폴리오">
+  <meta property="og:description" content="시선을 끄는 첫인상부터 자연스러운 탐색까지, 사용자의 경험을 디자인합니다.">
+  <meta property="og:url" content="https://clolingtv-glitch.github.io/cclolingtv-glitch.github.io/">
+  <meta property="og:image" content="https://clolingtv-glitch.github.io/cclolingtv-glitch.github.io/assets/images/share-preview.jpg">
+  <meta property="og:image:width" content="2048">
+  <meta property="og:image:height" content="1446">
+  <meta property="og:image:alt" content="김하경 웹디자이너 포트폴리오">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="김하경 | 웹디자이너 포트폴리오">
+  <meta name="twitter:image" content="https://clolingtv-glitch.github.io/cclolingtv-glitch.github.io/assets/images/share-preview.jpg">
+  <link rel="stylesheet" href="./css/site-update.css?v=20260929">
+  <script src="./js/site-update.js?v=20260929" defer></script>
 </head>
 
 <body>
@@ -495,6 +508,7 @@
         <div>
           <p class="bd-gallery__eyebrow">DESIGN / 03</p>
           <h2 class="bd-gallery__title" id="bd-title">BANNER DESIGN</h2>
+          <p class="bd-gallery__hint">이미지를 눌러 자세히 살펴보세요 ↗</p>
         </div>
         <p class="bd-gallery__intro">짧게 스쳐도<br>인상은 길게 남도록</p>
       </header>
@@ -512,7 +526,6 @@
         <div class="bd-gallery__side bd-gallery__side--right">
           <p class="bd-gallery__label">PROJECT</p>
           <p class="bd-gallery__name" data-bd-name>Butter Layer</p>
-          <p class="bd-gallery__hint">이미지를 눌러<br>자세히 살펴보세요 ↗</p>
         </div>
       </div>
       <noscript>
@@ -711,7 +724,7 @@
                   height="8490"></div>
             </div>
           </div>
-          <p class="ws-hint">화면 위에 커서를 올리면 천천히 내려갑니다. 터치 화면에서는 이미지 안을 스크롤해 보세요.</p>
+          <p class="ws-hint">화면 위에 커서를 올리면 천천히 내려갑니다.<br>터치 화면에서는 이미지 안을 스크롤해 보세요.</p>
         </div>
       </article>
       <article class="ws-project ws-project--tarty" data-website="tarty" aria-labelledby="ws-tarty-title">
@@ -750,7 +763,7 @@
                   height="5622"></div>
             </div>
           </div>
-          <p class="ws-hint">화면 위에 커서를 올리면 천천히 내려갑니다. 터치 화면에서는 이미지 안을 스크롤해 보세요.</p>
+          <p class="ws-hint">화면 위에 커서를 올리면 천천히 내려갑니다.<br>터치 화면에서는 이미지 안을 스크롤해 보세요.</p>
         </div>
       </article>
     </section>
@@ -769,7 +782,7 @@
       </header>
       <div class="ws-dialog-controls">
         <div class="ws-pages" data-ws-dialog-pages role="group" aria-label="디자인 페이지"></div>
-        <div class="ws-pages" data-ws-dialog-devices role="group" aria-label="화면 크기"><button type="button"
+        <div class="ws-pages" data-ws-dialog-devices role="group" aria-label="화면 크기"><span class="ws-control-label" aria-hidden="true">DEVICE</span><button type="button"
             data-device="pc" aria-pressed="true">PC</button><button type="button" data-device="pad"
             aria-pressed="false">Tablet</button><button type="button" data-device="mo"
             aria-pressed="false">Mobile</button></div>
@@ -781,8 +794,14 @@
     <!-- ABOUT: 문구는 이 섹션에서, 연락처/이력서 링크는 js/about.js에서 수정하세요. -->
     <section class="about-section" id="about" aria-labelledby="about-title">
       <header class="about-heading" data-about-reveal>
-        <p class="about-eyebrow">ABOUT ME / NEXT CHAPTER</p>
-        <h2 id="about-title">보기 좋은 화면에<br>쓰기 좋은 이유를 더합니다</h2>
+        <div class="about-heading__copy">
+          <p class="about-eyebrow">ABOUT ME / NEXT CHAPTER</p>
+          <h2 id="about-title">보기 좋은 화면에<br>쓰기 좋은 이유를 더합니다</h2>
+        </div>
+        <figure class="about-art">
+          <img src="./assets/images/about-img.png" width="1536" height="1024" loading="lazy"
+            alt="웹페이지에 핑크색 카드를 배치하며 화면을 디자인하는 김하경 캐릭터">
+        </figure>
       </header>
       <div class="about-body">
         <div class="about-story" data-about-reveal>
