@@ -58,6 +58,8 @@
   let moving = false;
   let moveStart = 0;
   let manualTarget = null;
+  let drag = null;
+  let suppressClickUntil = 0;
 
   function resetMotion() {
     phaseTime = 0;
@@ -104,7 +106,7 @@
   }
 
   function canPlay() {
-    return (manualTarget !== null || (!paused && !keyboardPaused)) && !detailActive && inView && !document.hidden;
+    return !drag && (manualTarget !== null || (!paused && !keyboardPaused)) && !detailActive && inView && !document.hidden;
   }
 
   function tick(time) {
@@ -171,6 +173,7 @@
   }
 
   ring.addEventListener('click', (event) => {
+    if (performance.now() < suppressClickUntil) { event.preventDefault(); return; }
     const button = event.target.closest('.poster-card');
     if (button) openPoster(button);
   });
@@ -208,6 +211,49 @@
     else { manualTarget = target; moveStart = rotation; moving = true; }
     syncPlayback();
   }
+
+  // 모바일: 가로 이동만 갤러리가 처리하고 세로 스크롤은 브라우저에 맡깁니다.
+  const mobileDrag = matchMedia('(max-width: 768px)');
+  stage.addEventListener('pointerdown', event => {
+    if (!mobileDrag.matches || !event.isPrimary || event.button !== 0 || detailActive || drag) return;
+    drag = { id: event.pointerId, x: event.clientX, y: event.clientY, rotation, active: false };
+    syncPlayback();
+  });
+  stage.addEventListener('pointermove', event => {
+    if (!drag || event.pointerId !== drag.id) return;
+    const dx = event.clientX - drag.x, dy = event.clientY - drag.y;
+    if (!drag.active) {
+      if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+      if (Math.abs(dy) >= Math.abs(dx)) { drag = null; syncPlayback(); return; }
+      drag.active = true;
+      resetMotion();
+      stage.setPointerCapture(event.pointerId);
+      stage.classList.add('is-dragging');
+    }
+    event.preventDefault();
+    const spacing = cards[0].offsetWidth + (parseFloat(getComputedStyle(stage).columnGap) || 0);
+    rotation = drag.rotation + dx / Math.max(spacing, 1) * step;
+    paint();
+  }, { passive: false });
+  function finishDrag(event) {
+    if (!drag || (event && event.pointerId !== drag.id)) return;
+    const ended = drag;
+    drag = null;
+    stage.classList.remove('is-dragging');
+    if (ended.active) {
+      suppressClickUntil = performance.now() + 500;
+      const target = Math.round(rotation / step) * step;
+      resetMotion();
+      if (motionPreference.matches) { rotation = target; paint(); }
+      else { manualTarget = target; moveStart = rotation; moving = true; }
+    }
+    if (stage.hasPointerCapture(ended.id)) stage.releasePointerCapture(ended.id);
+    syncPlayback();
+  }
+  window.addEventListener('pointerup', finishDrag);
+  window.addEventListener('pointercancel', finishDrag);
+  stage.addEventListener('lostpointercapture', finishDrag);
+  mobileDrag.addEventListener('change', () => finishDrag());
 
   gallery.querySelector('[data-poster-prev]').addEventListener('click', () => moveOne(1));
   gallery.querySelector('[data-poster-next]').addEventListener('click', () => moveOne(-1));

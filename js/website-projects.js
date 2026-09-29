@@ -8,8 +8,7 @@ window.websiteProjects = [
     "headline": "취향을 모으고,<br>일상을 채우는 공간.",
     "description": "가구를 고르는 순간부터 공간을 상상하는 순간까지. 따뜻한 이미지와 정돈된 상품 구성으로 취향을 발견하는 가구 쇼핑몰을 디자인했습니다.",
     "role": "브랜드 콘셉트 · UI 디자인 · 반응형 화면 디자인 · 퍼블리싱",
-    "status": "퍼블리싱 진행 중",
-    "url": "",
+    "url": "https://clolingtv-glitch.github.io/modam.github.io/",
     "pages": [
       [
         "main",

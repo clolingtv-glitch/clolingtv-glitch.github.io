@@ -27,6 +27,7 @@
   q('[data-ws-dialog-role]').textContent = project.role;
   q('[data-ws-dialog-status]').textContent = project.status;
   const list=q('[data-ws-dialog-pages]');list.replaceChildren();
+  const label=document.createElement('span');label.className='ws-control-label';label.textContent='PAGE';label.setAttribute('aria-hidden','true');list.append(label);
   project.pages.forEach(([key,label]) => {
    const b=document.createElement('button');b.type='button';b.dataset.modalPage=key;b.textContent=label;
    b.addEventListener('click',()=>{page=key;renderDetail();});list.append(b);
