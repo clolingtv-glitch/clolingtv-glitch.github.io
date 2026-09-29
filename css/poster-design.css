@@ -35,7 +35,6 @@
   font-weight: 700;
   font-size: clamp(3.5rem, 6.4vw, 8rem);
   line-height: .95;
-  letter-spacing: -.035em;
 }
 
 .pd-gallery__description {
