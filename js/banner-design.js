@@ -5,19 +5,19 @@
   const banners = [
     {
       image: './assets/images/banner-design/our-Bakery.jpg',
-      brand: 'OUR Bakery', category: 'FOOD & LIFESTYLE', title: 'Butter Layer',
+      brand: 'OUR Bakery', category: 'FOOD & LIFESTYLE', title: 'CROISSANT',
       description: '크림색 배경 위에 크루아상을 크게 배치해 겹겹의 결과 바삭한 질감을 강조한 배너입니다. 검은 세리프 타이포그래피와 노란 필기체를 겹쳐 제품에 시선을 모으고, 작은 라벨과 바코드 그래픽으로 감각적인 패키지 같은 인상을 더했습니다.',
       alt: '크림색 배경에 크루아상과 검은 CROISSANT 글자, 노란 Butter Layer 필기체가 겹쳐진 아우어 베이커리 배너'
     },
     {
       image: './assets/images/banner-design/gentle-monster.jpg',
-      brand: 'GENTLE MONSTER', category: 'EYEWEAR & FASHION', title: 'Beyond the Frame',
+      brand: 'GENTLE MONSTER', category: 'EYEWEAR & FASHION', title: 'BEYOND THE FRAME',
       description: '차가운 회보라색 배경과 메탈릭한 스타일링의 모델 이미지를 조합한 아이웨어 배너입니다. 얼굴과 안경이 중심에 놓이도록 구성하고 양옆에 문구와 브랜드명을 배치해, 여백 속에서도 제품과 모델의 인상이 선명하게 전달되도록 했습니다.',
       alt: '회보라색 배경에 안경과 금속 장식을 착용한 모델, Beyond the Frame 문구가 있는 젠틀몬스터 배너'
     },
     {
       image: './assets/images/banner-design/jacquemus.jpg',
-      brand: 'JACQUEMUS', category: 'FASHION COLLECTION', title: 'La Couleur',
+      brand: 'JACQUEMUS', category: 'FASHION COLLECTION', title: 'LA COULEUR',
       description: '옐로 컬러의 의상과 가방을 아치형 배경 안에 배치해 밝은 여름 분위기를 표현한 패션 배너입니다. 크림색 여백과 야자수 그림자로 따뜻한 공간감을 만들고, 왼쪽의 간결한 타이포그래피로 컬렉션의 메시지를 정리했습니다.',
       alt: '크림색 배경과 노란 아치 앞에 노란 의상과 가방을 든 모델이 서 있는 자크뮈스 배너'
     },
