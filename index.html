@@ -100,6 +100,8 @@
   <link rel="stylesheet" href="./css/profile-refresh.css">
   <script src="./js/profile-refresh.js"></script>
   <link rel="stylesheet" href="./css/interaction-update.css?v=20260928">
+  <link rel="stylesheet" href="./css/records.css">
+  <script src="./js/records.js" defer></script>
 
   <!-- 링크 미리보기: 배포 주소가 바뀌면 og:url 및 이미지의 전체 주소도 변경하세요. -->
   <meta property="og:type" content="website">
@@ -234,10 +236,40 @@
           </ul>
         </div>
       </div>
-      <a class="pr-next" href="#skills"><span>이런 생각을 이런 도구로 구현합니다</span><span class="pr-next__arrow"
-          aria-hidden="true">↓</span></a>
     </section>
 
+    <section class="records" id="records" aria-labelledby="records-title">
+      <header class="records__header">
+        <p class="records__eyebrow">AWARDS & CERTIFICATIONS</p>
+        <h2 id="records-title">차곡차곡 쌓아온 배움의 기록</h2>
+      </header>
+
+      <div class="records__columns">
+        <div class="records__column">
+          <h3 class="records__heading">
+            <span class="records__dot" aria-hidden="true"></span>
+            수상 및 장학 내역
+          </h3>
+
+          <ul class="records__list" id="awards-list"></ul>
+        </div>
+
+        <div class="records__column">
+          <h3 class="records__heading">
+            <span class="records__dot records__dot--green" aria-hidden="true"></span>
+            자격증
+          </h3>
+
+          <ul class="records__list" id="certificates-list"></ul>
+        </div>
+      </div>
+
+      <noscript>
+        <p>수상내역과 자격증 목록을 보려면 JavaScript를 활성화해주세요.</p>
+      </noscript>
+      <!-- <a class="pr-next" href="#skills"><span>이런 생각을 이런 도구로 구현합니다</span><span class="pr-next__arrow"
+          aria-hidden="true">↓</span></a> -->
+    </section>
 
     <!-- Tools & Skills -->
     <section class="skills" id="skills" aria-labelledby="skills-title">
@@ -783,8 +815,9 @@
       </header>
       <div class="ws-dialog-controls">
         <div class="ws-pages" data-ws-dialog-pages role="group" aria-label="디자인 페이지"></div>
-        <div class="ws-pages" data-ws-dialog-devices role="group" aria-label="화면 크기"><span class="ws-control-label" aria-hidden="true">DEVICE</span><button type="button"
-            data-device="pc" aria-pressed="true">PC</button><button type="button" data-device="pad"
+        <div class="ws-pages" data-ws-dialog-devices role="group" aria-label="화면 크기"><span class="ws-control-label"
+            aria-hidden="true">DEVICE</span><button type="button" data-device="pc"
+            aria-pressed="true">PC</button><button type="button" data-device="pad"
             aria-pressed="false">Tablet</button><button type="button" data-device="mo"
             aria-pressed="false">Mobile</button></div>
         <p data-ws-caption aria-live="polite"></p>
