@@ -1,0 +1,265 @@
+/* 수상 · 장학 · 자격증 */
+.records {
+    padding-bottom: 7rem;
+    color: var(--main-black, #0e1822);
+    scroll-margin-top: 7rem;
+}
+
+.records,
+.records * {
+    box-sizing: border-box;
+}
+
+.records :is(h2, h3, p, ul) {
+    margin: 0;
+}
+
+.records__header {
+    margin-bottom: 3.5rem;
+}
+
+.records__eyebrow {
+    margin-bottom: 1rem !important;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    letter-spacing: 0.12em;
+}
+
+.records__header h2 {
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.045em;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+/* PC: 왼쪽 수상 / 오른쪽 자격증 */
+.records__columns {
+    display: flex;
+    align-items: stretch;
+    gap: 3rem;
+}
+
+.records__column {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.records__column:first-child {
+    flex-grow: 1.2;
+}
+
+.records__column+.records__column {
+    padding-left: 3rem;
+    border-left: 0.0625rem solid var(--gray, #dbe4dc);
+}
+
+.records__heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem !important;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.5;
+    word-break: keep-all;
+}
+
+.records__dot {
+    flex: 0 0 0.7rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: var(--sub-pink, #e6aace);
+}
+
+.records__dot--green {
+    background: var(--sub-accent, #93c36d);
+}
+
+.records__list {
+    padding: 0;
+    list-style: none;
+}
+
+.records__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+
+    padding-block: 1.5rem;
+    border-bottom: 0.0625rem solid var(--gray, #dbe4dc);
+}
+
+.records__item:first-child {
+    border-top: 0.0625rem solid var(--gray, #dbe4dc);
+}
+
+.records__date {
+    flex: 0 0 5.5rem;
+    padding-top: 0.15rem;
+
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: #62735e;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.records__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.records__name {
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.65;
+    letter-spacing: -0.025em;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.records__work {
+    margin-top: 0.4rem !important;
+
+    font-size: 0.9rem;
+    line-height: 1.7;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.records__issuer {
+    margin-top: 0.45rem !important;
+
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: #62735e;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+/* 긴 비고는 아래에, 짧은 수상 결과는 오른쪽에 */
+.records__note {
+    margin-top: 0.4rem !important;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.records__result {
+    flex: 0 0 auto;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5rem;
+
+    background: var(--sub-pink, #e6aace);
+    color: var(--main-black, #0e1822);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+/* 태블릿: 수상 → 자격증 순서 */
+@media (max-width: 1024px) {
+    html {
+        font-size: 14px;
+    }
+
+    .records {
+        padding-block: 5rem;
+    }
+
+    .records__columns {
+        flex-direction: column;
+        gap: 3.5rem;
+    }
+
+    .records__column,
+    .records__column:first-child {
+        flex: auto;
+        width: 100%;
+    }
+
+    .records__column+.records__column {
+        padding-left: 0;
+        border-left: 0;
+    }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+    html {
+        font-size: 12px;
+    }
+
+    .records {
+        padding-block: 4rem;
+    }
+
+    .records__header {
+        margin-bottom: 2.5rem;
+    }
+
+    .records__header h2 {
+        font-size: clamp(1.8rem, 5.5vw, 2.75rem);
+    }
+
+    .records__heading {
+        font-size: 1.5rem;
+    }
+
+    .records__item {
+        gap: 1rem;
+        padding-block: 1.5rem;
+    }
+
+    .records__name {
+        font-size: 1.15rem;
+    }
+
+    .records__work,
+    .records__note {
+        font-size: 1rem;
+    }
+
+    .records__date,
+    .records__issuer {
+        font-size: 0.95rem;
+    }
+
+    .records__result {
+        font-size: 0.9rem;
+    }
+}
+
+/* 좁은 모바일: 날짜를 한 줄 위로 */
+@media (max-width: 480px) {
+    .records__item {
+        flex-wrap: wrap;
+        gap: 0.6rem 0.75rem;
+    }
+
+    .records__date {
+        flex: 0 0 100%;
+        padding-top: 0;
+    }
+
+    .records__content {
+        flex: 1 1 0;
+    }
+}
+
+/* 280px처럼 좁을 때 결과도 아래로 이동 */
+@media (max-width: 320px) {
+    .records__content {
+        flex-basis: 100%;
+    }
+
+    .records__result {
+        margin-top: 0.2rem;
+    }
+}
